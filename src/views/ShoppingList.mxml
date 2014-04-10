@@ -1,0 +1,1247 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:View xmlns:fx="http://ns.adobe.com/mxml/2009"
+		xmlns:s="library://ns.adobe.com/flex/spark"
+		xmlns:shoppinglistservice="services.shoppinglistservice.*"
+		xmlns:shoppinglistservice1="services.shoppinglistservice1.*"
+		backgroundColor="#E4E7E2" fontSize="24" title="ShoppingList">
+	<fx:Script>
+		<![CDATA[
+			import mx.events.FlexEvent;
+			
+			import valueObjects.Shoppinglist;
+			
+			
+			protected function productInput_creationCompleteHandler(event:FlexEvent):void
+			{
+				getAllShoppinglistResult.token = shoppinglistService1.getAllShoppinglist();
+			}
+			
+			protected function button1_clickHandler(event:MouseEvent):void
+			{
+				if((green0.visible == false) || (orange0.visible == false) || (red0.visible == false)){
+				switch (productInput.text){
+					case "tomatoes":
+					case "Tomatoes":
+					case "chicken":
+					case "Chicken":
+					case "onions":
+					case "Onions":
+					case "spinach":
+					case "Spinach":
+					case "asparagus":
+					case "Asparagus":
+					case "okra":
+					case "Okra":
+					case "broccoli":
+					case "Broccoli":
+					case "potatoes":
+					case "Potatoes":
+					case "peas":
+					case "Peas":
+					case "mushrooms":
+					case "Mushrooms":
+					case "courgette":
+					case "Courgette":
+					case "apples":
+					case "Apples":
+					case "bananas":
+					case "Bananas":
+					case "avocado":
+					case "Avocado":
+					case "avocados":
+					case "Avocados":
+					case "peaches":
+					case "Peaches":
+					case "oranges":
+					case "Oranges":
+						green0.visible = true;
+						break;
+					
+					case "Bread":
+					case "bread":
+					case "Milk":
+					case "milk":
+					case "Cheese":
+					case "cheese":
+					case "Sausages":
+					case "sausages":
+					case "Pasta":
+					case "pasta":
+					case "Spaghetti":
+					case "spaghetti":
+					case "Minced Beef":
+					case "minced beef":
+						orange0.visible= true;
+						break;
+					
+					case "Chocolate":
+					case "chocolate":
+					case "Sugar":
+					case "sugar":
+					case "Butter":
+					case "butter":
+						red0.visible= true;
+						break;
+				}
+				
+				switch (productInput1.text){
+					case "tomatoes":
+					case "Tomatoes":
+					case "chicken":
+					case "Chicken":
+					case "onions":
+					case "Onions":
+					case "spinach":
+					case "Spinach":
+					case "asparagus":
+					case "Asparagus":
+					case "okra":
+					case "Okra":
+					case "broccoli":
+					case "Broccoli":
+					case "potatoes":
+					case "Potatoes":
+					case "peas":
+					case "Peas":
+					case "mushrooms":
+					case "Mushrooms":
+					case "courgette":
+					case "Courgette":
+					case "apples":
+					case "Apples":
+					case "bananas":
+					case "Bananas":
+					case "avocado":
+					case "Avocado":
+					case "avocados":
+					case "Avocados":
+					case "peaches":
+					case "Peaches":
+					case "oranges":
+					case "Oranges":
+						green1.visible = true;
+						break;
+					
+					case "Bread":
+					case "bread":
+					case "Milk":
+					case "milk":
+					case "Cheese":
+					case "cheese":
+					case "Sausages":
+					case "sausages":
+					case "Pasta":
+					case "pasta":
+					case "Spaghetti":
+					case "spaghetti":
+					case "Minced Beef":
+					case "minced beef":
+						orange1.visible= true;
+						break;
+					
+					case "Chocolate":
+					case "chocolate":
+					case "Sugar":
+					case "sugar":
+					case "Butter":
+					case "butter":
+						red0.visible= true;
+						break;
+				}
+				
+				switch (productInput2.text){
+					case "tomatoes":
+					case "Tomatoes":
+					case "chicken":
+					case "Chicken":
+					case "onions":
+					case "Onions":
+					case "spinach":
+					case "Spinach":
+					case "asparagus":
+					case "Asparagus":
+					case "okra":
+					case "Okra":
+					case "broccoli":
+					case "Broccoli":
+					case "potatoes":
+					case "Potatoes":
+					case "peas":
+					case "Peas":
+					case "mushrooms":
+					case "Mushrooms":
+					case "courgette":
+					case "Courgette":
+					case "apples":
+					case "Apples":
+					case "bananas":
+					case "Bananas":
+					case "avocado":
+					case "Avocado":
+					case "avocados":
+					case "Avocados":
+					case "peaches":
+					case "Peaches":
+					case "oranges":
+					case "Oranges":
+						green2.visible = true;
+						break;
+					
+					case "Bread":
+					case "bread":
+					case "Milk":
+					case "milk":
+					case "Cheese":
+					case "cheese":
+					case "Sausages":
+					case "sausages":
+					case "Pasta":
+					case "pasta":
+					case "Spaghetti":
+					case "spaghetti":
+					case "Minced Beef":
+					case "minced beef":
+						orange2.visible= true;
+						break;
+					
+					case "Chocolate":
+					case "chocolate":
+					case "Sugar":
+					case "sugar":
+					case "Butter":
+					case "butter":
+						red2.visible= true;
+						break;
+				}
+				
+				switch (productInput3.text){
+					case "tomatoes":
+					case "Tomatoes":
+					case "chicken":
+					case "Chicken":
+					case "onions":
+					case "Onions":
+					case "spinach":
+					case "Spinach":
+					case "asparagus":
+					case "Asparagus":
+					case "okra":
+					case "Okra":
+					case "broccoli":
+					case "Broccoli":
+					case "potatoes":
+					case "Potatoes":
+					case "peas":
+					case "Peas":
+					case "mushrooms":
+					case "Mushrooms":
+					case "courgette":
+					case "Courgette":
+					case "apples":
+					case "Apples":
+					case "bananas":
+					case "Bananas":
+					case "avocado":
+					case "Avocado":
+					case "avocados":
+					case "Avocados":
+					case "peaches":
+					case "Peaches":
+					case "oranges":
+					case "Oranges":
+						green3.visible = true;
+						break;
+					
+					case "Bread":
+					case "bread":
+					case "Milk":
+					case "milk":
+					case "Cheese":
+					case "cheese":
+					case "Sausages":
+					case "sausages":
+					case "Pasta":
+					case "pasta":
+					case "Spaghetti":
+					case "spaghetti":
+					case "Minced Beef":
+					case "minced beef":
+						orange3.visible= true;
+						break;
+					
+					case "Chocolate":
+					case "chocolate":
+					case "Sugar":
+					case "sugar":
+					case "Butter":
+					case "butter":
+						red3.visible= true;
+						break;
+				}
+				
+				switch (productInput4.text){
+					case "tomatoes":
+					case "Tomatoes":
+					case "chicken":
+					case "Chicken":
+					case "onions":
+					case "Onions":
+					case "spinach":
+					case "Spinach":
+					case "asparagus":
+					case "Asparagus":
+					case "okra":
+					case "Okra":
+					case "broccoli":
+					case "Broccoli":
+					case "potatoes":
+					case "Potatoes":
+					case "peas":
+					case "Peas":
+					case "mushrooms":
+					case "Mushrooms":
+					case "courgette":
+					case "Courgette":
+					case "apples":
+					case "Apples":
+					case "bananas":
+					case "Bananas":
+					case "avocado":
+					case "Avocado":
+					case "avocados":
+					case "Avocados":
+					case "peaches":
+					case "Peaches":
+					case "oranges":
+					case "Oranges":
+						green4.visible = true;
+						break;
+					
+					case "Bread":
+					case "bread":
+					case "Milk":
+					case "milk":
+					case "Cheese":
+					case "cheese":
+					case "Sausages":
+					case "sausages":
+					case "Pasta":
+					case "pasta":
+					case "Spaghetti":
+					case "spaghetti":
+					case "Minced Beef":
+					case "minced beef":
+						orange4.visible= true;
+						break;
+					
+					case "Chocolate":
+					case "chocolate":
+					case "Sugar":
+					case "sugar":
+					case "Butter":
+					case "butter":
+						red4.visible= true;
+						break;
+				}
+				
+				switch (productInput5.text){
+					case "tomatoes":
+					case "Tomatoes":
+					case "chicken":
+					case "Chicken":
+					case "onions":
+					case "Onions":
+					case "spinach":
+					case "Spinach":
+					case "asparagus":
+					case "Asparagus":
+					case "okra":
+					case "Okra":
+					case "broccoli":
+					case "Broccoli":
+					case "potatoes":
+					case "Potatoes":
+					case "peas":
+					case "Peas":
+					case "mushrooms":
+					case "Mushrooms":
+					case "courgette":
+					case "Courgette":
+					case "apples":
+					case "Apples":
+					case "bananas":
+					case "Bananas":
+					case "avocado":
+					case "Avocado":
+					case "avocados":
+					case "Avocados":
+					case "peaches":
+					case "Peaches":
+					case "oranges":
+					case "Oranges":
+						green5.visible = true;
+						break;
+					
+					case "Bread":
+					case "bread":
+					case "Milk":
+					case "milk":
+					case "Cheese":
+					case "cheese":
+					case "Sausages":
+					case "sausages":
+					case "Pasta":
+					case "pasta":
+					case "Spaghetti":
+					case "spaghetti":
+					case "Minced Beef":
+					case "minced beef":
+						orange5.visible= true;
+						break;
+					
+					case "Chocolate":
+					case "chocolate":
+					case "Sugar":
+					case "sugar":
+					case "Butter":
+					case "butter":
+						red5.visible= true;
+						break;
+				}
+				
+				switch (productInput6.text){
+					case "tomatoes":
+					case "Tomatoes":
+					case "chicken":
+					case "Chicken":
+					case "onions":
+					case "Onions":
+					case "spinach":
+					case "Spinach":
+					case "asparagus":
+					case "Asparagus":
+					case "okra":
+					case "Okra":
+					case "broccoli":
+					case "Broccoli":
+					case "potatoes":
+					case "Potatoes":
+					case "peas":
+					case "Peas":
+					case "mushrooms":
+					case "Mushrooms":
+					case "courgette":
+					case "Courgette":
+					case "apples":
+					case "Apples":
+					case "bananas":
+					case "Bananas":
+					case "avocado":
+					case "Avocado":
+					case "avocados":
+					case "Avocados":
+					case "peaches":
+					case "Peaches":
+					case "oranges":
+					case "Oranges":
+						green6.visible = true;
+						break;
+					
+					case "Bread":
+					case "bread":
+					case "Milk":
+					case "milk":
+					case "Cheese":
+					case "cheese":
+					case "Sausages":
+					case "sausages":
+					case "Pasta":
+					case "pasta":
+					case "Spaghetti":
+					case "spaghetti":
+					case "Minced Beef":
+					case "minced beef":
+						orange6.visible= true;
+						break;
+					
+					case "Chocolate":
+					case "chocolate":
+					case "Sugar":
+					case "sugar":
+					case "Butter":
+					case "butter":
+						red6.visible= true;
+						break;
+				}
+				
+				switch (productInput7.text){
+					case "tomatoes":
+					case "Tomatoes":
+					case "chicken":
+					case "Chicken":
+					case "onions":
+					case "Onions":
+					case "spinach":
+					case "Spinach":
+					case "asparagus":
+					case "Asparagus":
+					case "okra":
+					case "Okra":
+					case "broccoli":
+					case "Broccoli":
+					case "potatoes":
+					case "Potatoes":
+					case "peas":
+					case "Peas":
+					case "mushrooms":
+					case "Mushrooms":
+					case "courgette":
+					case "Courgette":
+					case "apples":
+					case "Apples":
+					case "bananas":
+					case "Bananas":
+					case "avocado":
+					case "Avocado":
+					case "avocados":
+					case "Avocados":
+					case "peaches":
+					case "Peaches":
+					case "oranges":
+					case "Oranges":
+						green7.visible = true;
+						break;
+					
+					case "Bread":
+					case "bread":
+					case "Milk":
+					case "milk":
+					case "Cheese":
+					case "cheese":
+					case "Sausages":
+					case "sausages":
+					case "Pasta":
+					case "pasta":
+					case "Spaghetti":
+					case "spaghetti":
+					case "Minced Beef":
+					case "minced beef":
+						orange7.visible= true;
+						break;
+					
+					case "Chocolate":
+					case "chocolate":
+					case "Sugar":
+					case "sugar":
+					case "Butter":
+					case "butter":
+						red7.visible= true;
+						break;
+				}
+				
+				switch (productInput8.text){
+					case "tomatoes":
+					case "Tomatoes":
+					case "chicken":
+					case "Chicken":
+					case "onions":
+					case "Onions":
+					case "spinach":
+					case "Spinach":
+					case "asparagus":
+					case "Asparagus":
+					case "okra":
+					case "Okra":
+					case "broccoli":
+					case "Broccoli":
+					case "potatoes":
+					case "Potatoes":
+					case "peas":
+					case "Peas":
+					case "mushrooms":
+					case "Mushrooms":
+					case "courgette":
+					case "Courgette":
+					case "apples":
+					case "Apples":
+					case "bananas":
+					case "Bananas":
+					case "avocado":
+					case "Avocado":
+					case "avocados":
+					case "Avocados":
+					case "peaches":
+					case "Peaches":
+					case "oranges":
+					case "Oranges":
+						green8.visible = true;
+						break;
+					
+					case "Bread":
+					case "bread":
+					case "Milk":
+					case "milk":
+					case "Cheese":
+					case "cheese":
+					case "Sausages":
+					case "sausages":
+					case "Pasta":
+					case "pasta":
+					case "Spaghetti":
+					case "spaghetti":
+					case "Minced Beef":
+					case "minced beef":
+						orange8.visible= true;
+						break;
+					
+					case "Chocolate":
+					case "chocolate":
+					case "Sugar":
+					case "sugar":
+					case "Butter":
+					case "butter":
+						red8.visible= true;
+						break;
+				}
+				
+				switch (productInput9.text){
+					case "tomatoes":
+					case "Tomatoes":
+					case "chicken":
+					case "Chicken":
+					case "onions":
+					case "Onions":
+					case "spinach":
+					case "Spinach":
+					case "asparagus":
+					case "Asparagus":
+					case "okra":
+					case "Okra":
+					case "broccoli":
+					case "Broccoli":
+					case "potatoes":
+					case "Potatoes":
+					case "peas":
+					case "Peas":
+					case "mushrooms":
+					case "Mushrooms":
+					case "courgette":
+					case "Courgette":
+					case "apples":
+					case "Apples":
+					case "bananas":
+					case "Bananas":
+					case "avocado":
+					case "Avocado":
+					case "avocados":
+					case "Avocados":
+					case "peaches":
+					case "Peaches":
+					case "oranges":
+					case "Oranges":
+						green9.visible = true;
+						break;
+					
+					case "Bread":
+					case "bread":
+					case "Milk":
+					case "milk":
+					case "Cheese":
+					case "cheese":
+					case "Sausages":
+					case "sausages":
+					case "Pasta":
+					case "pasta":
+					case "Spaghetti":
+					case "spaghetti":
+					case "Minced Beef":
+					case "minced beef":
+						orange9.visible= true;
+						break;
+					
+					case "Chocolate":
+					case "chocolate":
+					case "Sugar":
+					case "sugar":
+					case "Butter":
+					case "butter":
+						red9.visible= true;
+						break;
+				}
+				}else if ((green0.visible == true) || (orange0.visible == true) || (red0.visible == true)){
+					green0.visible = false;
+					green1.visible = false;
+					green2.visible = false;
+					green3.visible = false;
+					green4.visible = false;
+					green5.visible = false;
+					green6.visible = false;
+					green7.visible = false;
+					green8.visible = false;
+					green9.visible = false;
+				}
+				
+			}		
+			
+			protected function productInput_clickHandler(event:MouseEvent):void
+			{
+				
+				productInput.styleName="clicked";
+				productInput1.styleName=null;
+				productInput2.styleName=null;
+				productInput3.styleName=null;
+				productInput4.styleName=null;
+				productInput5.styleName=null;
+				productInput6.styleName=null;
+				productInput7.styleName=null;
+				productInput8.styleName=null;
+				productInput9.styleName=null;
+				deleteBtn.visible=true;
+				deleteBtn1.visible=false;
+				deleteBtn2.visible=false;
+				deleteBtn3.visible=false;
+				deleteBtn4.visible=false;
+				deleteBtn5.visible=false;
+				deleteBtn6.visible=false;
+				deleteBtn7.visible=false;
+				deleteBtn8.visible=false;
+				deleteBtn9.visible=false;
+			}
+			
+			
+			protected function deleteBtn_clickHandler(event:MouseEvent):void
+			{
+				deleteShoppinglistResult.token = shoppinglistService1.deleteShoppinglist(productInput.text);
+				navigator.pushView(ShoppingList);
+			}			
+			
+			protected function productInput1_clickHandler(event:MouseEvent):void
+			{
+				productInput.styleName=null;
+				productInput1.styleName="clicked";
+				productInput2.styleName=null;
+				productInput3.styleName=null;
+				productInput4.styleName=null;
+				productInput5.styleName=null;
+				productInput6.styleName=null;
+				productInput7.styleName=null;
+				productInput8.styleName=null;
+				productInput9.styleName=null;
+				deleteBtn.visible=false;
+				deleteBtn1.visible=true;
+				deleteBtn2.visible=false;
+				deleteBtn3.visible=false;
+				deleteBtn4.visible=false;
+				deleteBtn5.visible=false;
+				deleteBtn6.visible=false;
+				deleteBtn7.visible=false;
+				deleteBtn8.visible=false;
+				deleteBtn9.visible=false;
+			}
+			
+			protected function deleteBtn1_clickHandler(event:MouseEvent):void
+			{
+				deleteShoppinglistResult1.token = shoppinglistService1.deleteShoppinglist(productInput1.text);
+				navigator.pushView(ShoppingList);
+			}
+			
+			protected function productInput2_clickHandler(event:MouseEvent):void
+			{
+				productInput.styleName=null;
+				productInput1.styleName=null;
+				productInput2.styleName="clicked";
+				productInput3.styleName=null;
+				productInput4.styleName=null;
+				productInput5.styleName=null;
+				productInput6.styleName=null;
+				productInput7.styleName=null;
+				productInput8.styleName=null;
+				productInput9.styleName=null;
+				deleteBtn.visible=false;
+				deleteBtn1.visible=false;
+				deleteBtn2.visible=true;
+				deleteBtn3.visible=false;
+				deleteBtn4.visible=false;
+				deleteBtn5.visible=false;
+				deleteBtn6.visible=false;
+				deleteBtn7.visible=false;
+				deleteBtn8.visible=false;
+				deleteBtn9.visible=false;
+			}
+			
+			protected function deleteBtn2_clickHandler(event:MouseEvent):void
+			{
+				deleteShoppinglistResult2.token = shoppinglistService1.deleteShoppinglist(productInput2.text);
+				navigator.pushView(ShoppingList);
+			}
+			
+			protected function productInput3_clickHandler(event:MouseEvent):void
+			{
+				productInput.styleName=null;
+				productInput1.styleName=null;
+				productInput2.styleName=null;
+				productInput3.styleName="clicked";
+				productInput4.styleName=null;
+				productInput5.styleName=null;
+				productInput6.styleName=null;
+				productInput7.styleName=null;
+				productInput8.styleName=null;
+				productInput9.styleName=null;
+				deleteBtn.visible=false;
+				deleteBtn1.visible=false;
+				deleteBtn2.visible=false;
+				deleteBtn3.visible=true;
+				deleteBtn4.visible=false;
+				deleteBtn5.visible=false;
+				deleteBtn6.visible=false;
+				deleteBtn7.visible=false;
+				deleteBtn8.visible=false;
+				deleteBtn9.visible=false;
+			}
+			
+			protected function deleteBtn3_clickHandler(event:MouseEvent):void
+			{
+				deleteShoppinglistResult3.token = shoppinglistService1.deleteShoppinglist(productInput3.text);
+				navigator.pushView(ShoppingList);
+			}
+			
+			protected function productInput4_clickHandler(event:MouseEvent):void
+			{
+				productInput.styleName=null;
+				productInput1.styleName=null;
+				productInput2.styleName=null;
+				productInput3.styleName=null;
+				productInput4.styleName="clicked";
+				productInput5.styleName=null;
+				productInput6.styleName=null;
+				productInput7.styleName=null;
+				productInput8.styleName=null;
+				productInput9.styleName=null;
+				deleteBtn.visible=false;
+				deleteBtn1.visible=false;
+				deleteBtn2.visible=false;
+				deleteBtn3.visible=false;
+				deleteBtn4.visible=true;
+				deleteBtn5.visible=false;
+				deleteBtn6.visible=false;
+				deleteBtn7.visible=false;
+				deleteBtn8.visible=false;
+				deleteBtn9.visible=false;
+			}
+			
+			protected function deleteBtn4_clickHandler(event:MouseEvent):void
+			{
+				deleteShoppinglistResult4.token = shoppinglistService1.deleteShoppinglist(productInput4.text);
+				navigator.pushView(ShoppingList);
+			}
+			
+			protected function productInput5_clickHandler(event:MouseEvent):void
+			{
+				productInput.styleName=null;
+				productInput1.styleName=null;
+				productInput2.styleName=null;
+				productInput3.styleName=null;
+				productInput4.styleName=null;
+				productInput5.styleName="clicked";
+				productInput6.styleName=null;
+				productInput7.styleName=null;
+				productInput8.styleName=null;
+				productInput9.styleName=null;
+				deleteBtn.visible=false;
+				deleteBtn1.visible=false;
+				deleteBtn2.visible=false;
+				deleteBtn3.visible=false;
+				deleteBtn4.visible=false;
+				deleteBtn5.visible=true;
+				deleteBtn6.visible=false;
+				deleteBtn7.visible=false;
+				deleteBtn8.visible=false;
+				deleteBtn9.visible=false;
+			}
+			
+			protected function deleteBtn5_clickHandler(event:MouseEvent):void
+			{
+				deleteShoppinglistResult5.token = shoppinglistService1.deleteShoppinglist(productInput5.text);
+				navigator.pushView(ShoppingList);
+			}
+			
+			protected function productInput6_clickHandler(event:MouseEvent):void
+			{
+				productInput.styleName=null;
+				productInput1.styleName=null;
+				productInput2.styleName=null;
+				productInput3.styleName=null;
+				productInput4.styleName=null;
+				productInput5.styleName=null;
+				productInput6.styleName="clicked";
+				productInput7.styleName=null;
+				productInput8.styleName=null;
+				productInput9.styleName=null;
+				deleteBtn.visible=false;
+				deleteBtn1.visible=false;
+				deleteBtn2.visible=false;
+				deleteBtn3.visible=false;
+				deleteBtn4.visible=false;
+				deleteBtn5.visible=false;
+				deleteBtn6.visible=true;
+				deleteBtn7.visible=false;
+				deleteBtn8.visible=false;
+				deleteBtn9.visible=false;
+			}
+			
+			protected function deleteBtn6_clickHandler(event:MouseEvent):void
+			{
+				deleteShoppinglistResult6.token = shoppinglistService1.deleteShoppinglist(productInput6.text);
+				navigator.pushView(ShoppingList);
+			}
+			
+			protected function productInput7_clickHandler(event:MouseEvent):void
+			{
+				productInput.styleName=null;
+				productInput1.styleName=null;
+				productInput2.styleName=null;
+				productInput3.styleName=null;
+				productInput4.styleName=null;
+				productInput5.styleName=null;
+				productInput6.styleName=null;
+				productInput7.styleName="clicked";
+				productInput8.styleName=null;
+				productInput9.styleName=null;
+				deleteBtn.visible=false;
+				deleteBtn1.visible=false;
+				deleteBtn2.visible=false;
+				deleteBtn3.visible=false;
+				deleteBtn4.visible=false;
+				deleteBtn5.visible=false;
+				deleteBtn6.visible=false;
+				deleteBtn7.visible=true;
+				deleteBtn8.visible=false;
+				deleteBtn9.visible=false;
+			}
+			
+			protected function deleteBtn7_clickHandler(event:MouseEvent):void
+			{
+				deleteShoppinglistResult7.token = shoppinglistService1.deleteShoppinglist(productInput7.text);
+				navigator.pushView(ShoppingList);
+			}
+			
+			protected function productInput8_clickHandler(event:MouseEvent):void
+			{
+				productInput.styleName=null;
+				productInput1.styleName=null;
+				productInput2.styleName=null;
+				productInput3.styleName=null;
+				productInput4.styleName=null;
+				productInput5.styleName=null;
+				productInput6.styleName=null;
+				productInput7.styleName=null;
+				productInput8.styleName="clicked";
+				productInput9.styleName=null;
+				deleteBtn.visible=false;
+				deleteBtn1.visible=false;
+				deleteBtn2.visible=false;
+				deleteBtn3.visible=false;
+				deleteBtn4.visible=false;
+				deleteBtn5.visible=false;
+				deleteBtn6.visible=false;
+				deleteBtn7.visible=false;
+				deleteBtn8.visible=true;
+				deleteBtn9.visible=false;
+			}
+			
+			protected function deleteBtn8_clickHandler(event:MouseEvent):void
+			{
+				deleteShoppinglistResult8.token = shoppinglistService1.deleteShoppinglist(productInput8.text);
+				navigator.pushView(ShoppingList);
+			}
+			
+			protected function productInput9_clickHandler(event:MouseEvent):void
+			{
+				productInput.styleName=null;
+				productInput1.styleName=null;
+				productInput2.styleName=null;
+				productInput3.styleName=null;
+				productInput4.styleName=null;
+				productInput5.styleName=null;
+				productInput6.styleName=null;
+				productInput7.styleName=null;
+				productInput8.styleName=null;
+				productInput9.styleName="clicked";
+				deleteBtn.visible=false;
+				deleteBtn1.visible=false;
+				deleteBtn2.visible=false;
+				deleteBtn3.visible=false;
+				deleteBtn4.visible=false;
+				deleteBtn5.visible=false;
+				deleteBtn6.visible=false;
+				deleteBtn7.visible=false;
+				deleteBtn8.visible=false;
+				deleteBtn9.visible=true;
+			}
+			
+			protected function deleteBtn9_clickHandler(event:MouseEvent):void
+			{
+				deleteShoppinglistResult9.token = shoppinglistService1.deleteShoppinglist(productInput9.text);
+				navigator.pushView(ShoppingList);
+			}
+			
+			protected function button2_clickHandler(event:MouseEvent):void
+			{
+				hint0.visible = false;
+				hintBtn0.visible = false;
+				hint1.visible=true;
+				hintBtn1.visible=true;
+				
+			}
+			
+			protected function hintBtn1_clickHandler(event:MouseEvent):void
+			{
+				hint1.visible=false;
+				hintBtn1.visible=false;
+			}
+			
+		]]>
+	</fx:Script>
+	<fx:Declarations>
+		<s:CallResponder id="getAllShoppinglistResult"/>
+		<shoppinglistservice1:ShoppinglistService1 id="shoppinglistService1"/>
+		<s:CallResponder id="deleteShoppinglistResult"/>
+		<s:CallResponder id="deleteShoppinglistResult1"/>
+		<s:CallResponder id="deleteShoppinglistResult2"/>
+		<s:CallResponder id="deleteShoppinglistResult3"/>
+		<s:CallResponder id="deleteShoppinglistResult4"/>
+		<s:CallResponder id="deleteShoppinglistResult5"/>
+		<s:CallResponder id="deleteShoppinglistResult6"/>
+		<s:CallResponder id="deleteShoppinglistResult7"/>
+		<s:CallResponder id="deleteShoppinglistResult8"/>
+		<s:CallResponder id="deleteShoppinglistResult9"/>
+	</fx:Declarations>
+	<s:navigationContent>
+		<s:Image source="assets/SLlogo.png"/>
+	</s:navigationContent>
+	<s:titleContent>
+		<s:VGroup width="289" height="118">
+			<s:HGroup width="200" height="14">
+			</s:HGroup>
+			<s:Label color="#FFFFFF" fontFamily="Arial" fontSize="31" fontStyle="normal"
+					 fontWeight="bold" lineThrough="false" text="Shopping List"/>
+			<s:HGroup width="160" height="54" accentColor="#FF0E0E" alignmentBaseline="roman"
+					  breakOpportunity="auto" buttonMode="true" chromeColor="#95E64E"
+					  contentBackgroundColor="#FF00FC" dominantBaseline="auto" downColor="#CF0F0F">
+				<s:Button width="44" height="44" click="navigator.pushView(Cost)" icon="assets/PoundSign.png"/>
+				<s:Button width="44" height="44" label="kcal" click="navigator.pushView(Nutrition)" fontSize="12"/>
+				<s:Button width="44" height="44" click="navigator.pushView(Favourites)"
+						  icon="assets/heart(1).png"/>
+			</s:HGroup>
+		</s:VGroup>
+	</s:titleContent>
+	<s:Label x="58" y="197" fontWeight="bold" text="Product"/>
+	<s:Label x="123" y="37" fontSize="16" text="Add Item"/>
+	<s:Label x="431" y="201" fontSize="15" fontWeight="bold" text="Added by"/>
+	<s:Button x="120" y="63" width="68" height="48" label="Text" fontSize="14" click="navigator.pushView(AddText)"/>
+	<s:Button x="200" y="63" width="68" height="48" fontFamily="Arial" fontSize="10"
+			  icon="assets/handwrite.png"/>
+	<s:Button x="280" y="63" width="68" height="48" fontFamily="Arial" fontSize="10"
+			  icon="assets/BarcodeIcon.jpg"/>
+	
+	<!-- List of products on shopping list -->
+	<s:VGroup x="58" y="240" width="200" height="530">
+		<s:VGroup id="vGroup" width="200" height="46"
+				 >
+			<s:Label id="productInput" width="124" click="productInput_clickHandler(event)"
+					 creationComplete="productInput_creationCompleteHandler(event)"
+					 text="{getAllShoppinglistResult.lastResult[0].productName}"/>
+		</s:VGroup>
+			<s:VGroup width="200" height="46">
+				<s:Label id="productInput1" width="152" click="productInput1_clickHandler(event)"
+						 creationComplete="productInput_creationCompleteHandler(event)"
+						 text="{getAllShoppinglistResult.lastResult[1].productName}"/>
+			</s:VGroup>
+				<s:VGroup width="200" height="46">
+					<s:Label id="productInput2" click="productInput2_clickHandler(event)"
+							 creationComplete="productInput_creationCompleteHandler(event)"
+							 text="{getAllShoppinglistResult.lastResult[2].productName}"/>
+				</s:VGroup>
+					<s:VGroup width="200" height="46">
+						<s:Label id="productInput3" click="productInput3_clickHandler(event)"
+								 creationComplete="productInput_creationCompleteHandler(event)"
+								 text="{getAllShoppinglistResult.lastResult[3].productName}"/>
+					</s:VGroup>
+						<s:VGroup width="200" height="46">
+							<s:Label id="productInput4" click="productInput4_clickHandler(event)"
+									 creationComplete="productInput_creationCompleteHandler(event)"
+									 text="{getAllShoppinglistResult.lastResult[4].productName}"/>
+						</s:VGroup>
+							<s:VGroup width="200" height="46">
+								<s:Label id="productInput5" click="productInput5_clickHandler(event)"
+										 creationComplete="productInput_creationCompleteHandler(event)"
+										 text="{getAllShoppinglistResult.lastResult[5].productName}"/>
+							</s:VGroup>
+								<s:VGroup width="200" height="46">
+									<s:Label id="productInput6" click="productInput6_clickHandler(event)"
+											 creationComplete="productInput_creationCompleteHandler(event)"
+											 text="{getAllShoppinglistResult.lastResult[6].productName}"/>
+								</s:VGroup>
+									<s:VGroup width="200" height="46">
+										<s:Label id="productInput7" click="productInput7_clickHandler(event)"
+												 creationComplete="productInput_creationCompleteHandler(event)"
+												 text="{getAllShoppinglistResult.lastResult[7].productName}"/>
+									</s:VGroup>
+										<s:VGroup width="200" height="46">
+											<s:Label id="productInput8" click="productInput8_clickHandler(event)"
+													 creationComplete="productInput_creationCompleteHandler(event)"
+													 text="{getAllShoppinglistResult.lastResult[8].productName}"/>
+										</s:VGroup>
+											<s:VGroup width="200" height="46">
+												<s:Label id="productInput9" click="productInput9_clickHandler(event)"
+														 creationComplete="productInput_creationCompleteHandler(event)"
+														 text="{getAllShoppinglistResult.lastResult[9].productName}"/>			
+			
+		</s:VGroup>
+	</s:VGroup>
+	
+	<!-- List of people who added using mobile on shopping list -->
+	<s:VGroup x="431" y="240" width="200" height="530" fontSize="15">
+		<s:VGroup id="vGroup0" width="200" height="46"
+				 >
+			<s:Label id="productInput0" width="124"
+					 creationComplete="productInput_creationCompleteHandler(event)"
+					 text="{getAllShoppinglistResult.lastResult[0].addedBy}"/>
+		</s:VGroup>
+			<s:VGroup width="200" height="46">
+				<s:Label id="productInput10" width="152"
+						 creationComplete="productInput_creationCompleteHandler(event)"
+						 text="{getAllShoppinglistResult.lastResult[1].addedBy}"/>
+			</s:VGroup>
+				<s:VGroup width="200" height="46">
+					<s:Label id="productInput11"
+							 creationComplete="productInput_creationCompleteHandler(event)"
+							 text="{getAllShoppinglistResult.lastResult[2].addedBy}"/>
+				</s:VGroup>
+					<s:VGroup width="200" height="46">
+						<s:Label id="productInput12"
+								 creationComplete="productInput_creationCompleteHandler(event)"
+								 text="{getAllShoppinglistResult.lastResult[3].addedBy}"/>
+					</s:VGroup>
+						<s:VGroup width="200" height="46">
+							<s:Label id="productInput13"
+									 creationComplete="productInput_creationCompleteHandler(event)"
+									 text="{getAllShoppinglistResult.lastResult[4].addedBy}"/>
+						</s:VGroup>
+							<s:VGroup width="200" height="46">
+								<s:Label id="productInput14"
+										 creationComplete="productInput_creationCompleteHandler(event)"
+										 text="{getAllShoppinglistResult.lastResult[5].addedBy}"/>
+							</s:VGroup>
+								<s:VGroup width="200" height="46">
+									<s:Label id="productInput15"
+											 creationComplete="productInput_creationCompleteHandler(event)"
+											 text="{getAllShoppinglistResult.lastResult[6].addedBy}"/>
+								</s:VGroup>
+									<s:VGroup width="200" height="46">
+										<s:Label id="productInput16"
+												 creationComplete="productInput_creationCompleteHandler(event)"
+												 text="{getAllShoppinglistResult.lastResult[7].addedBy}"/>
+									</s:VGroup>
+										<s:VGroup width="200" height="46">
+											<s:Label id="productInput17"
+													 creationComplete="productInput_creationCompleteHandler(event)"
+													 text="{getAllShoppinglistResult.lastResult[8].addedBy}"/>
+										</s:VGroup>
+											<s:VGroup width="200" height="46">
+												<s:Label id="productInput18"
+														 creationComplete="productInput_creationCompleteHandler(event)"
+														 text="{getAllShoppinglistResult.lastResult[9].addedBy}"/>			
+			
+		</s:VGroup>
+	</s:VGroup>
+	
+	<s:CalloutButton id="CalloutMenu" x="27" y="812" label="..." horizontalPosition="auto"
+					 verticalPosition="auto" click="hintBtn1_clickHandler(event)">
+		<s:calloutLayout>
+			<s:HorizontalLayout/>
+		</s:calloutLayout>
+		<s:Button label="Annotate" 
+				  click="navigator.pushView(Annotate);"/>
+		<s:Button label="Meal Plan" 
+				  click="navigator.pushView(MealPlan1);"/>
+		<s:Button label="Settings" 
+				  click="navigator.pushView(Settings);" />
+	</s:CalloutButton>
+	
+	<!--Nutrition Dots -->
+	<!--Nutrition Dots for product 0-->
+	<s:Image id="green0" x="291" y="243" width="20" height="20" source="assets/greendot.png" visible="false"/>
+	<s:Image id="orange0" x="291" y="243" width="20" height="20" source="assets/orangedot.png" visible="false"/>
+	<s:Image id="red0" x="291" y="243" width="20" height="20" source="assets/reddot.png" visible="false"/>
+	<!--Nutrition Dots for product 1-->
+	<s:Image id="green1" x="291" y="292" width="20" height="20" source="assets/greendot.png" visible="false"/>
+	<s:Image id="orange1" x="291" y="292" width="20" height="20" source="assets/orangedot.png" visible="false"/>
+	<s:Image id="red1" x="291" y="292" width="20" height="20" source="assets/reddot.png" visible="false"/>
+	<!--Nutrition Dots for product 2-->
+	<s:Image id="green2" x="291" y="341" width="20" height="20" source="assets/greendot.png" visible="false"/>
+	<s:Image id="orange2" x="291" y="341" width="20" height="20" source="assets/orangedot.png" visible="false"/>
+	<s:Image id="red2" x="291" y="341" width="20" height="20" source="assets/reddot.png" visible="false"/>
+	<!--Nutrition Dots for product 3-->
+	<s:Image id="green3" x="291" y="390" width="20" height="20" source="assets/greendot.png" visible="false"/>
+	<s:Image id="orange3" x="291" y="390" width="20" height="20" source="assets/orangedot.png" visible="false"/>
+	<s:Image id="red3" x="291" y="390" width="20" height="20" source="assets/reddot.png" visible="false"/>
+	<!--Nutrition Dots for product 4-->
+	<s:Image id="green4" x="291" y="441" width="20" height="20" source="assets/greendot.png" visible="false"/>
+	<s:Image id="orange4" x="291" y="441" width="20" height="20" source="assets/orangedot.png" visible="false"/>
+	<s:Image id="red4" x="291" y="441" width="20" height="20" source="assets/reddot.png" visible="false"/>
+	<!--Nutrition Dots for product 5-->
+	<s:Image id="green5" x="291" y="492" width="20" height="20" source="assets/greendot.png" visible="false"/>
+	<s:Image id="orange5" x="291" y="492" width="20" height="20" source="assets/orangedot.png" visible="false"/>
+	<s:Image id="red5" x="291" y="492" width="20" height="20" source="assets/reddot.png" visible="false"/>
+	<!--Nutrition Dots for product 6-->
+	<s:Image id="green6" x="291" y="547" width="20" height="20" source="assets/greendot.png" visible="false"/>
+	<s:Image id="orange6" x="291" y="547" width="20" height="20" source="assets/orangedot.png" visible="false"/>
+	<s:Image id="red6" x="291" y="547" width="20" height="20" source="assets/reddot.png" visible="false"/>
+	<!--Nutrition Dots for product 7-->
+	<s:Image id="green7" x="291" y="598" width="20" height="20" source="assets/greendot.png" visible="false"/>
+	<s:Image id="orange7" x="291" y="598" width="20" height="20" source="assets/orangedot.png" visible="false"/>
+	<s:Image id="red7" x="291" y="598" width="20" height="20" source="assets/reddot.png" visible="false"/>
+	<!--Nutrition Dots for product 8-->
+	<s:Image id="green8" x="291" y="650" width="20" height="20" source="assets/greendot.png" visible="false"/>
+	<s:Image id="orange8" x="291" y="650" width="20" height="20" source="assets/orangedot.png" visible="false"/>
+	<s:Image id="red8" x="291" y="650" width="20" height="20" source="assets/reddot.png" visible="false"/>
+	<!--Nutrition Dots for product 9-->
+	<s:Image id="green9" x="291" y="702" width="20" height="20" source="assets/greendot.png" visible="false"/>
+	<s:Image id="orange9" x="291" y="702" width="20" height="20" source="assets/orangedot.png" visible="false"/>
+	<s:Image id="red9" x="291" y="702" width="20" height="20" source="assets/reddot.png" visible="false"/>
+	
+	
+	
+	
+	<s:Image id="deleteBtn" x="245" y="243" width="29" height="29" source="assets/delete.png"   
+			 click="deleteBtn_clickHandler(event)" visible="false"/>
+	<s:Image id="deleteBtn1" x="245" y="292" width="29" height="29" source="assets/delete.png"   
+			 click="deleteBtn1_clickHandler(event)" visible="false"/>
+	<s:Image id="deleteBtn2" x="245" y="341" width="29" height="29" source="assets/delete.png"   
+			 click="deleteBtn2_clickHandler(event)" visible="false"/>
+	<s:Image id="deleteBtn3" x="245" y="390" width="29" height="29" source="assets/delete.png"   
+			 click="deleteBtn3_clickHandler(event)" visible="false"/>
+	<s:Image id="deleteBtn4" x="245" y="441" width="29" height="29" source="assets/delete.png"   
+			 click="deleteBtn4_clickHandler(event)" visible="false"/>
+	<s:Image id="deleteBtn5" x="245" y="492" width="29" height="29" source="assets/delete.png"   
+			 click="deleteBtn5_clickHandler(event)" visible="false"/>
+	<s:Image id="deleteBtn6" x="245" y="547" width="29" height="29" source="assets/delete.png"   
+			 click="deleteBtn6_clickHandler(event)" visible="false"/>
+	<s:Image id="deleteBtn7" x="245" y="598" width="29" height="29" source="assets/delete.png"   
+			 click="deleteBtn7_clickHandler(event)" visible="false"/>
+	<s:Image id="deleteBtn8" x="245" y="650" width="29" height="29" source="assets/delete.png"   
+			 click="deleteBtn8_clickHandler(event)" visible="false"/>
+	<s:Image id="deleteBtn9" x="245" y="702" width="29" height="29" source="assets/delete.png"   
+			 click="deleteBtn9_clickHandler(event)" visible="false"/>
+	<s:Image x="291" y="171" width="19" height="45" source="assets/TrafficLight.png" click="button1_clickHandler(event)"/>
+	<s:Label id="hint0" x="280" y="10" fontWeight="bold" styleName="helpfulhint"
+			 text="Helpful Hint&#xd;Choose a method&#xd;of adding items"/>
+	<s:Label id="hint1" x="78" y="767" fontWeight="bold" styleName="helpfulhint"
+			 text="Helpful Hint&#xd;Click here for more &#xd;options available to&#xd;you" visible="false"/>
+	<s:Button id="hintBtn0" x="368" y="37" width="50" height="26" label="Hide" click="button2_clickHandler(event)"
+			  fontSize="12" styleName="helpfulhint"/>
+	<s:Button id="hintBtn1" x="166" y="812" width="50" height="26" label="Hide" click="hintBtn1_clickHandler(event)"
+			  fontSize="12" styleName="helpfulhint" visible="false"/>
+
+</s:View>

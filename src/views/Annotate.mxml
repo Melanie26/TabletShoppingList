@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:View xmlns:fx="http://ns.adobe.com/mxml/2009"
+		xmlns:s="library://ns.adobe.com/flex/spark"
+		xmlns:shoppinglistservice="services.shoppinglistservice.*"
+		xmlns:shoppinglistservice1="services.shoppinglistservice1.*"
+		backgroundColor="#E4E7E2" fontSize="24" title="ShoppingList">
+	<fx:Script>
+		<![CDATA[
+			import mx.events.FlexEvent;
+			
+			import valueObjects.Shoppinglist;
+			
+			
+			protected function productInput_creationCompleteHandler(event:FlexEvent):void
+			{
+				getAllShoppinglistResult.token = shoppinglistService1.getAllShoppinglist();
+			}
+			
+			protected function deleteBtn9_clickHandler(event:MouseEvent):void
+			{
+				deleteShoppinglistResult9.token = shoppinglistService1.deleteShoppinglist(productInput9.text);
+				navigator.pushView(ShoppingList);
+			}
+			
+		]]>
+	</fx:Script>
+	<fx:Declarations>
+		<s:CallResponder id="getAllShoppinglistResult"/>
+		<shoppinglistservice1:ShoppinglistService1 id="shoppinglistService1"/>
+		<s:CallResponder id="deleteShoppinglistResult"/>
+		<s:CallResponder id="deleteShoppinglistResult1"/>
+		<s:CallResponder id="deleteShoppinglistResult2"/>
+		<s:CallResponder id="deleteShoppinglistResult3"/>
+		<s:CallResponder id="deleteShoppinglistResult4"/>
+		<s:CallResponder id="deleteShoppinglistResult5"/>
+		<s:CallResponder id="deleteShoppinglistResult6"/>
+		<s:CallResponder id="deleteShoppinglistResult7"/>
+		<s:CallResponder id="deleteShoppinglistResult8"/>
+		<s:CallResponder id="deleteShoppinglistResult9"/>
+	</fx:Declarations>
+	<s:navigationContent>
+		<s:Image source="assets/SLlogo.png"/>
+	</s:navigationContent>
+	<s:titleContent>
+		<s:VGroup width="289" height="118">
+			<s:HGroup width="200" height="14">
+			</s:HGroup>
+			<s:Label color="#FFFFFF" fontFamily="Arial" fontSize="31" fontStyle="normal"
+					 fontWeight="bold" lineThrough="false" text="Annotate"/>
+			<s:HGroup width="160" height="54" accentColor="#FF0E0E" alignmentBaseline="roman"
+					  breakOpportunity="auto" buttonMode="true" chromeColor="#95E64E"
+					  contentBackgroundColor="#FF00FC" dominantBaseline="auto" downColor="#CF0F0F">
+				<s:Button width="44" height="44" click="navigator.pushView(Cost)" icon="assets/PoundSign.png"/>
+				<s:Button width="44" height="44" label="kcal" click="navigator.pushView(Nutrition)" fontSize="12"/>
+				<s:Button width="44" height="44" click="navigator.pushView(Favourites)"
+						  icon="assets/heart(1).png"/>
+			</s:HGroup>
+		</s:VGroup>
+	</s:titleContent>
+	<s:actionContent>
+		<s:Button label="Back to Shopping List" click="navigator.popToFirstView()"/>
+	</s:actionContent>
+	<s:Label x="58" y="55" fontWeight="bold" text="Product"/>
+	<s:Label x="431" y="59" fontSize="15" fontWeight="bold" text="Added by"/>
+	
+	<!-- List of products on shopping list -->
+	<s:VGroup x="58" y="98" width="200" height="530">
+		<s:VGroup id="vGroup" width="200" height="46"
+				 >
+			<s:Label id="productInput" width="124" 
+					 creationComplete="productInput_creationCompleteHandler(event)"
+					 text="{getAllShoppinglistResult.lastResult[0].productName}"/>
+		</s:VGroup>
+			<s:VGroup width="200" height="46">
+				<s:Label id="productInput1" width="152"
+						 creationComplete="productInput_creationCompleteHandler(event)"
+						 text="{getAllShoppinglistResult.lastResult[1].productName}"/>
+			</s:VGroup>
+				<s:VGroup width="200" height="46">
+					<s:Label id="productInput2" 
+							 creationComplete="productInput_creationCompleteHandler(event)"
+							 text="{getAllShoppinglistResult.lastResult[2].productName}"/>
+				</s:VGroup>
+					<s:VGroup width="200" height="46">
+						<s:Label id="productInput3" 
+								 creationComplete="productInput_creationCompleteHandler(event)"
+								 text="{getAllShoppinglistResult.lastResult[3].productName}"/>
+					</s:VGroup>
+						<s:VGroup width="200" height="46">
+							<s:Label id="productInput4" 
+									 creationComplete="productInput_creationCompleteHandler(event)"
+									 text="{getAllShoppinglistResult.lastResult[4].productName}"/>
+						</s:VGroup>
+							<s:VGroup width="200" height="46">
+								<s:Label id="productInput5" 
+										 creationComplete="productInput_creationCompleteHandler(event)"
+										 text="{getAllShoppinglistResult.lastResult[5].productName}"/>
+							</s:VGroup>
+								<s:VGroup width="200" height="46">
+									<s:Label id="productInput6" 
+											 creationComplete="productInput_creationCompleteHandler(event)"
+											 text="{getAllShoppinglistResult.lastResult[6].productName}"/>
+								</s:VGroup>
+									<s:VGroup width="200" height="46">
+										<s:Label id="productInput7" 
+												 creationComplete="productInput_creationCompleteHandler(event)"
+												 text="{getAllShoppinglistResult.lastResult[7].productName}"/>
+									</s:VGroup>
+										<s:VGroup width="200" height="46">
+											<s:Label id="productInput8"
+													 creationComplete="productInput_creationCompleteHandler(event)"
+													 text="{getAllShoppinglistResult.lastResult[8].productName}"/>
+										</s:VGroup>
+											<s:VGroup width="200" height="46">
+												<s:Label id="productInput9" 
+														 creationComplete="productInput_creationCompleteHandler(event)"
+														 text="{getAllShoppinglistResult.lastResult[9].productName}"/>			
+			
+		</s:VGroup>
+	</s:VGroup>
+	
+	<!-- List of people who added using mobile on shopping list -->
+	<s:VGroup x="431" y="98" width="200" height="530" fontSize="15">
+		<s:VGroup id="vGroup0" width="200" height="46"
+				 >
+			<s:Label id="productInput0" width="124"
+					 creationComplete="productInput_creationCompleteHandler(event)"
+					 text="{getAllShoppinglistResult.lastResult[0].addedBy}"/>
+		</s:VGroup>
+			<s:VGroup width="200" height="46">
+				<s:Label id="productInput10" width="152"
+						 creationComplete="productInput_creationCompleteHandler(event)"
+						 text="{getAllShoppinglistResult.lastResult[1].addedBy}"/>
+			</s:VGroup>
+				<s:VGroup width="200" height="46">
+					<s:Label id="productInput11"
+							 creationComplete="productInput_creationCompleteHandler(event)"
+							 text="{getAllShoppinglistResult.lastResult[2].addedBy}"/>
+				</s:VGroup>
+					<s:VGroup width="200" height="46">
+						<s:Label id="productInput12"
+								 creationComplete="productInput_creationCompleteHandler(event)"
+								 text="{getAllShoppinglistResult.lastResult[3].addedBy}"/>
+					</s:VGroup>
+						<s:VGroup width="200" height="46">
+							<s:Label id="productInput13"
+									 creationComplete="productInput_creationCompleteHandler(event)"
+									 text="{getAllShoppinglistResult.lastResult[4].addedBy}"/>
+						</s:VGroup>
+							<s:VGroup width="200" height="46">
+								<s:Label id="productInput14"
+										 creationComplete="productInput_creationCompleteHandler(event)"
+										 text="{getAllShoppinglistResult.lastResult[5].addedBy}"/>
+							</s:VGroup>
+								<s:VGroup width="200" height="46">
+									<s:Label id="productInput15"
+											 creationComplete="productInput_creationCompleteHandler(event)"
+											 text="{getAllShoppinglistResult.lastResult[6].addedBy}"/>
+								</s:VGroup>
+									<s:VGroup width="200" height="46">
+										<s:Label id="productInput16"
+												 creationComplete="productInput_creationCompleteHandler(event)"
+												 text="{getAllShoppinglistResult.lastResult[7].addedBy}"/>
+									</s:VGroup>
+										<s:VGroup width="200" height="46">
+											<s:Label id="productInput17"
+													 creationComplete="productInput_creationCompleteHandler(event)"
+													 text="{getAllShoppinglistResult.lastResult[8].addedBy}"/>
+										</s:VGroup>
+											<s:VGroup width="200" height="46">
+												<s:Label id="productInput18"
+														 creationComplete="productInput_creationCompleteHandler(event)"
+														 text="{getAllShoppinglistResult.lastResult[9].addedBy}"/>			
+			
+		</s:VGroup>
+	</s:VGroup>
+	
+	<s:CalloutButton id="CalloutMenu" x="27" y="812" label="..." horizontalPosition="auto"
+					 verticalPosition="auto" >
+		<s:calloutLayout>
+			<s:HorizontalLayout/>
+		</s:calloutLayout>
+		<s:Button label="Annotate" 
+				  click="navigator.pushView(Annotate);"/>
+		<s:Button label="Meal Plan" 
+				  click="navigator.pushView(MealPlan1);"/>
+		<s:Button label="Settings" 
+				  click="navigator.pushView(Settings);" />
+	</s:CalloutButton>
+</s:View>

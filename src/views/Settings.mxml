@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:View xmlns:fx="http://ns.adobe.com/mxml/2009"
+		xmlns:s="library://ns.adobe.com/flex/spark"
+		xmlns:shoppinglistservice="services.shoppinglistservice.*"
+		xmlns:shoppinglistservice1="services.shoppinglistservice1.*"
+		xmlns:valueObjects="valueObjects.*"
+		xmlns:foodnutritionservice="services.foodnutritionservice.*"
+		xmlns:charts="mx.charts.*"
+		xmlns:series="mx.charts.series.*"
+		xmlns:foodcostservice="services.foodcostservice.*"
+		backgroundColor="#E4E7E2" currentState="Favourites" fontSize="24" title="Settings">
+	<fx:Script>
+		<![CDATA[
+			import mx.events.FlexEvent;
+			import mx.events.IndexChangedEvent;
+			
+			import spark.events.IndexChangeEvent;
+		]]>
+	</fx:Script>
+	<s:states>
+		<s:State name="Favourites"/>
+	</s:states>
+	<fx:Declarations>
+	</fx:Declarations>
+	<s:actionContent>
+		<s:Button label="Back to Shopping List" click="navigator.popToFirstView()"/>
+	</s:actionContent>
+	<s:titleContent>
+		<s:VGroup width="289" height="118">
+			<s:HGroup width="200" height="14">
+			</s:HGroup>
+			<s:Label color="#FFFFFF" fontFamily="Arial" fontSize="31" fontStyle="normal"
+					 fontWeight="bold" lineThrough="false" text="Settings"/>
+			<s:HGroup width="160" height="54" accentColor="#FF0E0E" alignmentBaseline="roman"
+					  breakOpportunity="auto" buttonMode="true" chromeColor="#95E64E"
+					  contentBackgroundColor="#FF00FC" dominantBaseline="auto" downColor="#CF0F0F">
+				<s:Button width="44" height="44" click="navigator.pushView(Cost)" icon="assets/PoundSign.png"/>
+				<s:Button width="44" height="44" label="kcal" click="navigator.pushView(Nutrition)" fontSize="12"/>
+				<s:Button width="44" height="44" click="navigator.pushView(Favourites)"
+						  icon="assets/heart(1).png"/>
+			</s:HGroup>
+		</s:VGroup>
+	</s:titleContent>
+	<s:navigationContent>
+		<s:Image source="assets/SLlogo.png"/>
+	</s:navigationContent>
+	<s:ToggleSwitch x="445" y="108" fontSize="20"/>
+	<s:ToggleSwitch x="445" y="167" fontSize="20"/>
+	<s:ToggleSwitch x="445" y="222" fontSize="20"/>
+	<s:ToggleSwitch x="445" y="279" fontSize="20"/>
+	<s:ToggleSwitch x="445" y="342" fontSize="20"/>
+	<s:Label x="57" y="350" fontSize="20" text="Automatically install upgrades"/>
+	<s:Label x="57" y="276" fontSize="20" text="Use wi-fi to transfer data &#xd;automatically"/>
+	<s:Label x="57" y="232" fontSize="20" text="Allow all users to add to list"/>
+	<s:Label x="57" y="186" fontSize="20" text="Geo-location"/>
+	<s:Label x="57" y="102" fontSize="20" text="Allow access to contacts, &#xd;location, pictures"/>
+	<s:Button x="171" y="509" label="Connect to other devices" fontSize="20"/>
+	<s:CalloutButton id="CalloutMenu" x="27" y="812" label="..." horizontalPosition="auto"
+					 verticalPosition="auto">
+		<s:calloutLayout>
+			<s:HorizontalLayout/>
+		</s:calloutLayout>
+		<s:Button label="Annotate" 
+				  click="navigator.pushView(Annotate);"/>
+		<s:Button label="Meal Plan" 
+				  click="navigator.pushView(MealPlan1);"/>
+		<s:Button label="Settings" 
+				  click="navigator.pushView(Settings);" />
+	</s:CalloutButton>
+</s:View>

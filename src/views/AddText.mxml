@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:View xmlns:fx="http://ns.adobe.com/mxml/2009"
+		xmlns:s="library://ns.adobe.com/flex/spark"
+		xmlns:shoppinglistservice="services.shoppinglistservice.*"
+		xmlns:shoppinglistservice1="services.shoppinglistservice1.*"
+		xmlns:valueObjects="valueObjects.*"
+		xmlns:foodnutritionservice="services.foodnutritionservice.*"
+		xmlns:charts="mx.charts.*"
+		xmlns:series="mx.charts.series.*"
+		xmlns:foodcostservice="services.foodcostservice.*"
+		backgroundColor="#E4E7E2" currentState="AddItem" fontSize="24" title="Add Item">
+	<fx:Script>
+		<![CDATA[
+			import mx.events.FlexEvent;
+			import mx.events.IndexChangedEvent;
+			
+			import spark.events.IndexChangeEvent;
+			
+			
+			protected function productInput_creationCompleteHandler(event:FlexEvent):void
+			{
+				getAllShoppinglistResult.token = shoppinglistService1.getAllShoppinglist();
+			}
+			
+			
+			protected function button_clickHandler(event:MouseEvent):void
+			{
+				var shoppinglist10:Shoppinglist = new Shoppinglist();
+				shoppinglist10.productName = productNameTextInput.text;
+				
+				createShoppinglistResult.token = shoppinglistService1.createShoppinglist(shoppinglist10);
+				shoppinglistService1.commit();
+				currentState="Added";
+			}
+			
+			protected function button1_clickHandler(event:MouseEvent):void
+			{
+				productNameTextInput.text = "";
+				currentState="AddItem";
+				
+			}
+			
+			protected function button2_clickHandler(event:MouseEvent):void
+			{
+				navigator.popToFirstView();
+			}
+			
+		]]>
+	</fx:Script>
+	<s:states>
+		<s:State name="AddItem"/>
+		<s:State name="Added"/>
+	</s:states>
+	<fx:Declarations>
+		<s:CallResponder id="getAllShoppinglistResult"/>
+		<shoppinglistservice1:ShoppinglistService1 id="shoppinglistService1"/>
+		<s:Label x="137" y="68" fontSize="20" text="Select item from list to view nutrition"/>
+		<s:CallResponder id="getShoppinglistByNameResult"/>
+		<s:CallResponder id="getFoodcostByNameResult"/>
+		<foodcostservice:FoodcostService id="foodcostService"/>
+		<valueObjects:Foodcost id="foodcost"/>
+		<s:CallResponder id="getAllFoodcostResult"/>
+		<valueObjects:Shoppinglist id="shoppinglist"/>
+		<s:CallResponder id="createShoppinglistResult"/>
+	</fx:Declarations>
+	<s:titleContent>
+		<s:VGroup width="289" height="118">
+			<s:HGroup width="200" height="14">
+			</s:HGroup>
+			<s:Label color="#FFFFFF" fontFamily="Arial" fontSize="31" fontStyle="normal"
+					 fontWeight="bold" lineThrough="false" text="Add Item"
+					 text.Added="Added"/>
+			<s:HGroup width="160" height="54" accentColor="#FF0E0E" alignmentBaseline="roman"
+					  breakOpportunity="auto" buttonMode="true" chromeColor="#95E64E"
+					  contentBackgroundColor="#FF00FC" dominantBaseline="auto" downColor="#CF0F0F">
+				<s:Button width="44" height="44" click="navigator.pushView(Cost)" icon="assets/PoundSign.png"/>
+				<s:Button width="44" height="44" label="kcal" click="navigator.pushView(Nutrition)" fontSize="12"/>
+				<s:Button width="44" height="44" click="navigator.pushView(Favourites)"
+						  icon="assets/heart(1).png"/>
+			</s:HGroup>
+		</s:VGroup>
+	</s:titleContent>
+	<s:navigationContent>
+		<s:Image source="assets/SLlogo.png"/>
+	</s:navigationContent>
+	<s:actionContent>
+		<s:Button width="200" height="80" label="Back to Shopping List"
+				  click="navigator.popToFirstView()"/>
+	</s:actionContent>
+	<s:VGroup includeIn="AddItem" x="201" y="315" width="200" height="530">
+		<s:VGroup id="vGroup" width="200" height="46" textAlign="center">
+			<s:Label id="productInput" width="198"
+					 creationComplete="productInput_creationCompleteHandler(event)"
+					 text="{getAllShoppinglistResult.lastResult[0].productName}"/>
+		</s:VGroup>
+			<s:VGroup width="200" height="46" textAlign="center">
+				<s:Label id="productInput1" width="199"
+						 creationComplete="productInput_creationCompleteHandler(event)"
+						 text="{getAllShoppinglistResult.lastResult[1].productName}"/>
+			</s:VGroup>
+				<s:VGroup width="200" height="46" textAlign="center">
+					<s:Label id="productInput2" width="198"
+							 creationComplete="productInput_creationCompleteHandler(event)"
+							 text="{getAllShoppinglistResult.lastResult[2].productName}"/>
+				</s:VGroup>
+					<s:VGroup width="200" height="46" textAlign="center">
+						<s:Label id="productInput3" width="201"
+								 creationComplete="productInput_creationCompleteHandler(event)"
+								 text="{getAllShoppinglistResult.lastResult[3].productName}"/>
+					</s:VGroup>
+						<s:VGroup width="200" height="46" textAlign="center">
+							<s:Label id="productInput4" width="201"
+									 creationComplete="productInput_creationCompleteHandler(event)"
+									 text="{getAllShoppinglistResult.lastResult[4].productName}"/>
+						</s:VGroup>
+							<s:VGroup width="200" height="46" textAlign="center">
+								<s:Label id="productInput5" width="200"
+										 creationComplete="productInput_creationCompleteHandler(event)"
+										 text="{getAllShoppinglistResult.lastResult[5].productName}"/>
+							</s:VGroup>
+								<s:VGroup width="200" height="46" textAlign="center">
+									<s:Label id="productInput6" width="200"
+											 creationComplete="productInput_creationCompleteHandler(event)"
+											 text="{getAllShoppinglistResult.lastResult[6].productName}"/>
+								</s:VGroup>
+									<s:VGroup width="200" height="46" textAlign="center">
+										<s:Label id="productInput7" width="201"
+												 creationComplete="productInput_creationCompleteHandler(event)"
+												 text="{getAllShoppinglistResult.lastResult[7].productName}"/>
+									</s:VGroup>
+										<s:VGroup width="200" height="46" textAlign="center">
+											<s:Label id="productInput8" width="201"
+													 creationComplete="productInput_creationCompleteHandler(event)"
+													 text="{getAllShoppinglistResult.lastResult[8].productName}"/>
+										</s:VGroup>
+											<s:VGroup width="200" height="46" textAlign="center">
+												<s:Label id="productInput9" width="200"
+														 creationComplete="productInput_creationCompleteHandler(event)"
+														 text="{getAllShoppinglistResult.lastResult[9].productName}"/>			
+			
+		</s:VGroup>
+	</s:VGroup>
+	<s:Form includeIn="AddItem" x="51" y="93" backgroundColor="#909090" defaultButton="{button}">
+		<s:FormItem label="Item Name" backgroundColor="#B3B3B3">
+			<s:TextInput id="productNameTextInput" text="{shoppinglist.productName}"/>
+		</s:FormItem>
+		
+		<s:FormItem backgroundColor="#909090">
+			<s:Button id="button" label="+" click="button_clickHandler(event)"/>
+		</s:FormItem>		
+	</s:Form>
+	
+	
+	<s:Label includeIn="AddItem" x="232" y="270" fontSize="24" fontWeight="bold" text="Current List:"/>
+	<s:CalloutButton id="CalloutMenu" includeIn="AddItem" x="27" y="812" label="..."
+					 horizontalPosition="auto" verticalPosition="auto">
+		<s:calloutLayout>
+			<s:HorizontalLayout/>
+		</s:calloutLayout>
+		<s:Button label="Annotate" 
+				  click="navigator.pushView(Annotate);"/>
+		<s:Button label="Meal Plan" 
+				  click="navigator.pushView(MealPlan1);"/>
+		<s:Button label="Settings" 
+				  click="navigator.pushView(Settings);" />
+	</s:CalloutButton>
+	<s:Label includeIn="Added" x="144" y="150" width="305" height="173" backgroundColor="#D2FC90"
+			 text="Item Added&#xd;&#xd;Add another item to list?&#xd;&#xd;&#xd;" textAlign="center"
+			 verticalAlign="middle"/>
+	<s:Button includeIn="Added" x="229" y="265" label="Yes" click="button1_clickHandler(event)"
+			  fontSize="20"/>
+	<s:Button includeIn="Added" x="308" y="265" label="No" click="button2_clickHandler(event)"
+			  fontSize="20"/>
+	<s:CalloutButton id="CalloutMenu0" includeIn="Added" x="27" y="812" label="..."
+					 horizontalPosition="auto" verticalPosition="auto">
+		<s:calloutLayout>
+			<s:HorizontalLayout/>
+		</s:calloutLayout>
+		<s:Button label="Annotate" 
+				  click="navigator.pushView(Annotate);"/>
+		<s:Button label="Meal Plan" 
+				  click="navigator.pushView(MealPlan1);"/>
+		<s:Button label="Settings" 
+				  click="navigator.pushView(Settings);" />
+	</s:CalloutButton>
+</s:View>

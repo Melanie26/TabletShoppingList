@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:View xmlns:fx="http://ns.adobe.com/mxml/2009"
+		xmlns:s="library://ns.adobe.com/flex/spark"
+		xmlns:shoppinglistservice="services.shoppinglistservice.*"
+		xmlns:shoppinglistservice1="services.shoppinglistservice1.*"
+		xmlns:valueObjects="valueObjects.*"
+		xmlns:foodnutritionservice="services.foodnutritionservice.*"
+		xmlns:charts="mx.charts.*"
+		xmlns:series="mx.charts.series.*"
+		xmlns:foodcostservice="services.foodcostservice.*"
+		currentState="Favourites" fontSize="24" title="Favourites"
+		backgroundColor.Added="#E4E7E2"
+		backgroundColor.Favourites="#E4E7E2">
+	<fx:Script>
+		<![CDATA[
+			import mx.events.FlexEvent;
+			import mx.events.IndexChangedEvent;
+			
+			import spark.events.IndexChangeEvent;
+			
+			import valueObjects.Shoppinglist;
+			
+			
+			protected function list_creationCompleteHandler(event:FlexEvent):void
+			{
+				getAllShoppinglistResult.token = shoppinglistService1.getAllShoppinglist();
+			}
+			
+			protected function foodcost_creationCompleteHandler(event:FlexEvent):void
+			{				
+				getAllFoodcostResult.token = foodcostService.getAllFoodcost();
+			}			
+			
+			protected function AddBtn_clickHandler(event:MouseEvent):void
+			{	
+				var shoppinglist10:Shoppinglist = new Shoppinglist();
+				shoppinglist10.productName = item.text;
+				
+				createShoppinglistResult.token = shoppinglistService1.createShoppinglist(shoppinglist10);
+				shoppinglistService1.commit();
+				currentState="Added";
+			}
+			
+			
+			protected function AddBtn1_clickHandler(event:MouseEvent):void
+			{
+				var shoppinglist10:Shoppinglist = new Shoppinglist();
+				shoppinglist10.productName = item1.text;
+				createShoppinglistResult2.token = shoppinglistService1.createShoppinglist(shoppinglist10);
+				shoppinglistService1.commit();
+				currentState="Added";
+			}
+			
+			
+			protected function AddBtn2_clickHandler(event:MouseEvent):void
+			{
+				var shoppinglist10:Shoppinglist = new Shoppinglist();
+				shoppinglist10.productName = item2.text;
+				createShoppinglistResult.token = shoppinglistService1.createShoppinglist(shoppinglist10);
+				shoppinglistService1.commit();
+				currentState="Added";
+
+			}
+			
+			protected function button1_clickHandler(event:MouseEvent):void
+			{
+				currentState="Favourites";
+				
+			}
+			
+		]]>
+	</fx:Script>
+	<s:states>
+		<s:State name="Favourites"/>
+		<s:State name="Added"/>
+	</s:states>
+	<fx:Declarations>
+		<s:CallResponder id="getAllShoppinglistResult"/>
+		<shoppinglistservice1:ShoppinglistService1 id="shoppinglistService1"/>
+		<s:CallResponder id="getShoppinglistByNameResult"/>
+		<s:CallResponder id="getFoodcostByNameResult"/>
+		<foodcostservice:FoodcostService id="foodcostService"/>
+		<valueObjects:Foodcost id="foodcost"/>
+		<s:CallResponder id="getAllFoodcostResult"/>
+		<s:CallResponder id="createShoppinglistResult"/>
+		<s:CallResponder id="createShoppinglistResult2"/>
+		<s:CallResponder id="createShoppinglistResult3"/>
+	</fx:Declarations>
+	<s:actionContent>
+		<s:Button label="Back to Shopping List" click="navigator.popToFirstView()"/>
+	</s:actionContent>
+	<s:titleContent>
+		<s:VGroup includeIn="Favourites" width="289" height="118">
+			<s:HGroup width="200" height="14">
+			</s:HGroup>
+			<s:Label color="#FFFFFF" fontFamily="Arial" fontSize="28" fontStyle="normal"
+					 fontWeight="bold" lineThrough="false" text="Favourites"/>
+			<s:HGroup width="160" height="54" accentColor="#FF0E0E" alignmentBaseline="roman"
+					  breakOpportunity="auto" buttonMode="true" chromeColor="#95E64E"
+					  contentBackgroundColor="#FF00FC" dominantBaseline="auto" downColor="#CF0F0F">
+				<s:Button width="44" height="44" click="navigator.pushView(Cost)" icon="assets/PoundSign.png"/>
+				<s:Button width="44" height="44" label="kcal" click="navigator.pushView(Nutrition)" fontSize="12"/>
+				<s:Button width="44" height="44" click="navigator.pushView(Favourites)"
+						  enabled="false" icon="assets/heart(1).png"/>
+			</s:HGroup>
+		</s:VGroup>
+		<s:VGroup includeIn="Added" width="289" height="118">
+			<s:HGroup width="200" height="14">
+			</s:HGroup>
+			<s:Label color="#FFFFFF" fontFamily="Arial" fontSize="28" fontStyle="normal"
+					 fontWeight="bold" lineThrough="false" text="Favourites"/>
+			<s:HGroup width="160" height="54" accentColor="#FF0E0E" alignmentBaseline="roman"
+					  breakOpportunity="auto" buttonMode="true" chromeColor="#95E64E"
+					  contentBackgroundColor="#FF00FC" dominantBaseline="auto" downColor="#CF0F0F">
+				<s:Button width="44" height="44" click="navigator.pushView(Cost)" icon="assets/PoundSign.png"/>
+				<s:Button width="44" height="44" label="kcal" click="navigator.pushView(Nutrition)" fontSize="12"/>
+				<s:Button width="44" height="44" click="navigator.pushView(Favourites)"
+						  enabled="false" icon="assets/heart(1).png"/>
+			</s:HGroup>
+		</s:VGroup>
+	</s:titleContent>
+	<s:navigationContent>
+		<s:Image includeIn="Favourites" source="assets/SLlogo.png"/>
+		<s:Image includeIn="Added" source="assets/SLlogo.png"/>
+	</s:navigationContent>
+	<s:Label includeIn="Favourites" x="190" y="74" fontSize="20" fontWeight="bold"
+			 text="Most Purchased Items"/>
+	<s:Label id="item" x="242" y="179" fontSize="24" text="Bread"/>
+	<s:Label id="item1" x="253" y="235" fontSize="24" text="Milk"/>
+	<s:Label id="item2" x="242" y="287" fontSize="24" text="Sugar"/>
+	<s:Button id="AddBtn" x="328" y="173" width="30" height="32" label="+"
+			  click="AddBtn_clickHandler(event)" fontSize="18"/>
+	<s:Button id="AddBtn1" x="328" y="229" width="30" height="32" label="+"
+			  click="AddBtn1_clickHandler(event)" fontSize="18"/>
+	<s:Button id="AddBtn2" x="328" y="281" width="30" height="32" label="+"
+			  click="AddBtn2_clickHandler(event)" fontSize="18"/>
+	<s:Label includeIn="Added" x="144" y="150" width="305" height="173" backgroundColor="#D2FC90"
+			 text="Item Added&#xd;&#xd;Add another item to list?&#xd;&#xd;&#xd;" textAlign="center"
+			 verticalAlign="middle"/>
+	<s:Button includeIn="Added" x="229" y="265" label="Yes" fontSize="20" click="button1_clickHandler(event)"/>
+	<s:Button includeIn="Added" x="308" y="265" label="No" fontSize="20" click="navigator.popToFirstView()"/>
+	<s:CalloutButton id="CalloutMenu3" includeIn="Added" x="27" y="812" label="..."
+					 horizontalPosition="auto" verticalPosition="auto">
+		<s:calloutLayout>
+			<s:HorizontalLayout/>
+		</s:calloutLayout>
+		<s:Button label="Annotate" 
+				  click="navigator.pushView(Annotate);"/>
+		<s:Button label="Meal Plan" 
+				  click="navigator.pushView(MealPlan1);"/>
+		<s:Button label="Settings" 
+				  click="navigator.pushView(Settings);" />
+	</s:CalloutButton>
+	<s:CalloutButton id="CalloutMenu0" includeIn="Favourites" x="27" y="812" label="..."
+					 horizontalPosition="auto" verticalPosition="auto">
+		<s:calloutLayout>
+			<s:HorizontalLayout/>
+		</s:calloutLayout>
+		<s:Button label="Annotate" 
+				  click="navigator.pushView(Annotate);"/>
+		<s:Button label="Meal Plan" 
+				  click="navigator.pushView(MealPlan1);"/>
+		<s:Button label="Settings" 
+				  click="navigator.pushView(Settings);" />
+	</s:CalloutButton>
+</s:View>

@@ -1,0 +1,427 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:View xmlns:fx="http://ns.adobe.com/mxml/2009"
+		xmlns:s="library://ns.adobe.com/flex/spark"
+		xmlns:shoppinglistservice="services.shoppinglistservice.*"
+		xmlns:shoppinglistservice1="services.shoppinglistservice1.*"
+		xmlns:valueObjects="valueObjects.*"
+		xmlns:foodnutritionservice="services.foodnutritionservice.*"
+		xmlns:charts="mx.charts.*"
+		xmlns:series="mx.charts.series.*"
+		xmlns:foodcostservice="services.foodcostservice.*"
+		currentState="TotalCost" fontSize="24" title="Nutrition"
+		title.asdaVouchers="Total Cost"
+		backgroundColor="#E4E7E2"
+		title.sainsburysVouchers="Total Cost"
+		title.tescoVouchers="Total Cost">
+	<fx:Script>
+		<![CDATA[
+			import mx.events.FlexEvent;
+			import mx.events.IndexChangedEvent;
+			
+			import spark.events.IndexChangeEvent;
+			
+			protected function list_creationCompleteHandler(event:FlexEvent):void
+			{
+				getAllShoppinglistResult.token = shoppinglistService1.getAllShoppinglist();
+			}
+			
+			protected function list_changeHandler(event:IndexChangeEvent):void
+			{
+				getFoodcostByNameResult.token = foodcostService.getFoodcostByName(ChosenItem.text);
+			}
+			
+			protected function foodcost_creationCompleteHandler(event:FlexEvent):void
+			{				
+				getAllFoodcostResult.token = foodcostService.getAllFoodcost();
+			}
+			
+			protected function button1_clickHandler(event:MouseEvent):void
+			{
+				currentState="IndividualCost";
+			}
+	
+			
+			protected function button2_clickHandler(event:MouseEvent):void
+			{
+				currentState="asdaVouchers";
+			}
+			
+			protected function button3_clickHandler(event:MouseEvent):void
+			{
+				currentState="tescoVouchers";
+			}
+			
+			protected function button4_clickHandler(event:MouseEvent):void
+			{
+				currentState="sainsburysVouchers";
+			}
+			
+			protected function button5_clickHandler(event:MouseEvent):void
+			{
+				currentState="TotalCost";
+			}
+			
+			protected function button6_clickHandler(event:MouseEvent):void
+			{
+				currentState="tescoVouchers";
+			}
+			
+			protected function button7_clickHandler(event:MouseEvent):void
+			{
+				currentState="sainsburysVouchers";
+			}
+			
+			protected function button8_clickHandler(event:MouseEvent):void
+			{
+				currentState="asdaVouchers";
+			}
+			
+			protected function button9_clickHandler(event:MouseEvent):void
+			{
+				currentState="TotalCost";
+			}
+			
+			protected function button10_clickHandler(event:MouseEvent):void
+			{
+				currentState="sainsburysVouchers";
+			}
+			
+			protected function button11_clickHandler(event:MouseEvent):void
+			{
+				currentState="asdaVouchers";
+			}
+			
+			protected function button12_clickHandler(event:MouseEvent):void
+			{
+				currentState="tescoVouchers";
+			}
+			
+			protected function button13_clickHandler(event:MouseEvent):void
+			{
+				currentState="TotalCost";
+			}
+			
+			protected function hintBtn0_clickHandler(event:MouseEvent):void
+			{
+				hint0.visible=false;
+				hintBtn0.visible=false;
+			}
+			
+			protected function hintBtn1_clickHandler(event:MouseEvent):void
+			{
+				hint1.visible=false;
+				hintBtn1.visible=false;
+			}
+			
+		]]>
+	</fx:Script>
+	<s:states>
+		<s:State name="IndividualCost"/>
+		<s:State name="TotalCost"/>
+		<s:State name="asdaVouchers"/>
+		<s:State name="tescoVouchers"/>
+		<s:State name="sainsburysVouchers"/>
+	</s:states>
+	<fx:Declarations>
+		<s:CallResponder id="getAllShoppinglistResult"/>
+		<shoppinglistservice1:ShoppinglistService1 id="shoppinglistService1"/>
+		<s:Label x="137" y="68" fontSize="20" text="Select item from list to view nutrition"/>
+		<s:CallResponder id="getShoppinglistByNameResult"/>
+		<s:CallResponder id="getAllFoodcostResult"/>
+		<foodcostservice:FoodcostService id="foodcostService"/>
+		<valueObjects:Foodcost id="foodcost"/>
+		<valueObjects:Foodcost id="foodcost2"/>
+		<s:CallResponder id="getFoodcostByNameResult"
+						 result="foodcost = getFoodcostByNameResult.lastResult as Foodcost"/>
+		<s:CallResponder id="getFoodcostByNameResult2"
+						 result="foodcost2 = getFoodcostByNameResult2.lastResult as Foodcost"/>
+		<s:CallResponder id="getFoodcostByNameResult3"/>
+		
+	</fx:Declarations>
+	<s:actionContent>
+		<s:Button label="Back to Shopping List" click="navigator.popToFirstView()"/>
+	</s:actionContent>
+	<s:titleContent>
+		<s:VGroup includeIn="sainsburysVouchers" width="289" height="118">
+			<s:HGroup width="200" height="14">
+			</s:HGroup>
+			<s:Label color="#FFFFFF" fontFamily="Arial" fontSize="28" fontStyle="normal"
+					 fontWeight="bold" lineThrough="false" text="Sainsbury's Vouchers"/>
+			<s:HGroup width="160" height="54" accentColor="#FF0E0E" alignmentBaseline="roman"
+					  breakOpportunity="auto" buttonMode="true" chromeColor="#95E64E"
+					  contentBackgroundColor="#FF00FC" dominantBaseline="auto" downColor="#CF0F0F">
+				<s:Button width="44" height="44" click="navigator.pushView(Cost)" icon="assets/PoundSign.png"/>
+				<s:Button width="44" height="44" label="kcal" click="navigator.pushView(Nutrition)" fontSize="12"/>
+				<s:Button width="44" height="44" click="navigator.pushView(Favourites)"
+						  icon="assets/heart(1).png"/>
+			</s:HGroup>
+		</s:VGroup>
+		<s:VGroup includeIn="tescoVouchers" width="289" height="118">
+			<s:HGroup width="200" height="14">
+			</s:HGroup>
+			<s:Label color="#FFFFFF" fontFamily="Arial" fontSize="31" fontStyle="normal"
+					 fontWeight="bold" lineThrough="false" text="Tesco Vouchers"/>
+			<s:HGroup width="160" height="54" accentColor="#FF0E0E" alignmentBaseline="roman"
+					  breakOpportunity="auto" buttonMode="true" chromeColor="#95E64E"
+					  contentBackgroundColor="#FF00FC" dominantBaseline="auto" downColor="#CF0F0F">
+				<s:Button width="44" height="44" click="navigator.pushView(Cost)" icon="assets/PoundSign.png"/>
+				<s:Button width="44" height="44" label="kcal" click="navigator.pushView(Nutrition)" fontSize="12"/>
+				<s:Button width="44" height="44" click="navigator.pushView(Favourites)"
+						  icon="assets/heart(1).png"/>
+			</s:HGroup>
+		</s:VGroup>
+		<s:VGroup includeIn="asdaVouchers" width="289" height="118">
+			<s:HGroup width="200" height="14">
+			</s:HGroup>
+			<s:Label color="#FFFFFF" fontFamily="Arial" fontSize="31" fontStyle="normal"
+					 fontWeight="bold" lineThrough="false" text="ASDA Vouchers"/>
+			<s:HGroup width="160" height="54" accentColor="#FF0E0E" alignmentBaseline="roman"
+					  breakOpportunity="auto" buttonMode="true" chromeColor="#95E64E"
+					  contentBackgroundColor="#FF00FC" dominantBaseline="auto" downColor="#CF0F0F">
+				<s:Button width="44" height="44" click="navigator.pushView(Cost)" icon="assets/PoundSign.png"/>
+				<s:Button width="44" height="44" label="kcal" click="navigator.pushView(Nutrition)" fontSize="12"/>
+				<s:Button width="44" height="44" click="navigator.pushView(Favourites)"
+						  icon="assets/heart(1).png"/>
+			</s:HGroup>
+		</s:VGroup>
+		<s:VGroup includeIn="IndividualCost" width="289" height="118">
+			<s:HGroup width="200" height="14">
+			</s:HGroup>
+			<s:Label color="#FFFFFF" fontFamily="Arial" fontSize="31" fontStyle="normal"
+					 fontWeight="bold" lineThrough="false" text="Individual Cost"/>
+			<s:HGroup width="160" height="54" accentColor="#FF0E0E" alignmentBaseline="roman"
+					  breakOpportunity="auto" buttonMode="true" chromeColor="#95E64E"
+					  contentBackgroundColor="#FF00FC" dominantBaseline="auto" downColor="#CF0F0F">
+				<s:Button width="44" height="44" click="navigator.pushView(Cost)" icon="assets/PoundSign.png"/>
+				<s:Button width="44" height="44" label="kcal" click="navigator.pushView(Nutrition)" fontSize="12"/>
+				<s:Button width="44" height="44" click="navigator.pushView(Favourites)"
+						  icon="assets/heart(1).png"/>
+			</s:HGroup>
+		</s:VGroup>
+		<s:VGroup includeIn="TotalCost" width="289" height="118">
+			<s:HGroup width="200" height="14">
+			</s:HGroup>
+			<s:Label color="#FFFFFF" fontFamily="Arial" fontSize="31" fontStyle="normal"
+					 fontWeight="bold" lineThrough="false" text="Cost"/>
+			<s:HGroup width="160" height="54" accentColor="#FF0E0E" alignmentBaseline="roman"
+					  breakOpportunity="auto" buttonMode="true" chromeColor="#95E64E"
+					  contentBackgroundColor="#FF00FC" dominantBaseline="auto" downColor="#CF0F0F">
+				<s:Button width="44" height="44" click="navigator.pushView(Cost)" enabled="false"
+						  icon="assets/PoundSign.png"/>
+				<s:Button width="44" height="44" label="kcal" click="navigator.pushView(Nutrition)" fontSize="12"/>
+				<s:Button width="44" height="44" click="navigator.pushView(Favourites)"
+						  icon="assets/heart(1).png"/>
+			</s:HGroup>
+		</s:VGroup>
+	</s:titleContent>
+	<s:navigationContent>
+		<s:Image includeIn="sainsburysVouchers" source="assets/SLlogo.png"/>
+		<s:Image includeIn="tescoVouchers" source="assets/SLlogo.png"/>
+		<s:Image includeIn="asdaVouchers" source="assets/SLlogo.png"/>
+		<s:Image includeIn="IndividualCost" source="assets/SLlogo.png"/>
+		<s:Image includeIn="TotalCost" source="assets/SLlogo.png"/>
+	</s:navigationContent>
+	<s:List id="list" includeIn="IndividualCost" x="0" y="128" height="592"
+			change="list_changeHandler(event)"
+			creationComplete="list_creationCompleteHandler(event)" fontSize="20"
+			labelField="productName">
+		<s:AsyncListView list="{getAllShoppinglistResult.lastResult}"/>
+	</s:List>
+	<s:Label x="161" y="67" fontSize="20" text="Select item from list to view cost"
+			 x.asdaVouchers="202" y.asdaVouchers="70" text.asdaVouchers="Total Cost of Groceries"
+			 x.IndividualCost="197" y.IndividualCost="63" fontWeight.IndividualCost="bold"
+			 x.sainsburysVouchers="202" y.sainsburysVouchers="70"
+			 text.sainsburysVouchers="Total Cost of Groceries"
+			 x.tescoVouchers="202" y.tescoVouchers="70" text.tescoVouchers="Total Cost of Groceries"
+			 x.TotalCost="189" y.TotalCost="61" fontSize.TotalCost="20" fontWeight.TotalCost="bold"
+			 text.TotalCost="Total Cost of Groceries"/>
+	<s:Image x="197" y="274" width="140" height="45" source="assets/asdaLogo.png"
+			 x.asdaVouchers="128" y.asdaVouchers="139"
+			 x.sainsburysVouchers="128" y.sainsburysVouchers="139"
+			 x.tescoVouchers="128" y.tescoVouchers="139"
+			 x.TotalCost="128" y.TotalCost="139"/>
+	<s:Image x="197" y="363" width="140" height="80" source="assets/tescoLogo.png"
+			 x.asdaVouchers="128" y.asdaVouchers="228" source.asdaVouchers="assets/tesco.png"
+			 source.IndividualCost="assets/tesco.png"
+			 x.sainsburysVouchers="128" y.sainsburysVouchers="228"
+			 source.sainsburysVouchers="assets/tesco.png"
+			 x.tescoVouchers="128" y.tescoVouchers="228" source.tescoVouchers="assets/tesco.png"
+			 x.TotalCost="128" y.TotalCost="228" smoothingQuality.TotalCost="high"
+			 smooth.TotalCost="true" source.TotalCost="assets/tesco.png"/>
+	<s:Image x="197" y="468" width="140" source="assets/sainsburysLogo.png"
+			 x.asdaVouchers="128" y.asdaVouchers="348" source.asdaVouchers="assets/sainsburys.png"
+			 x.IndividualCost="197" y.IndividualCost="485"
+			 source.IndividualCost="assets/sainsburys.png"
+			 x.sainsburysVouchers="126" y.sainsburysVouchers="347"
+			 source.sainsburysVouchers="assets/sainsburys.png"
+			 x.tescoVouchers="128" y.tescoVouchers="349"
+			 source.tescoVouchers="assets/sainsburys.png"
+			 x.TotalCost="128" y.TotalCost="347" source.TotalCost="assets/sainsburys.png"/>
+		<s:Label id="ChosenItem" includeIn="IndividualCost" x="335" y="128" fontSize="27"
+				 text="{list.selectedItem.productName}"/>
+	<s:Label id="individualAsda" x="398" y="284" width="143" fontSize="30"
+			 x.asdaVouchers="329" y.asdaVouchers="149"
+			 creationComplete.asdaVouchers="foodcost_creationCompleteHandler(event)"
+			 text.IndividualCost="£ {getFoodcostByNameResult.lastResult.asda}"
+			 x.sainsburysVouchers="329" y.sainsburysVouchers="149"
+			 creationComplete.sainsburysVouchers="foodcost_creationCompleteHandler(event)"
+			 x.tescoVouchers="329" y.tescoVouchers="149"
+			 creationComplete.tescoVouchers="foodcost_creationCompleteHandler(event)"
+			 x.TotalCost="329" y.TotalCost="149"
+			 creationComplete.TotalCost="foodcost_creationCompleteHandler(event)"
+			 text="£ {int((getAllFoodcostResult.lastResult[0].asda) + (getAllFoodcostResult.lastResult[1].asda) + (getAllFoodcostResult.lastResult[2].asda) + (getAllFoodcostResult.lastResult[3].asda) + (getAllFoodcostResult.lastResult[4].asda) + (getAllFoodcostResult.lastResult[5].asda) + (getAllFoodcostResult.lastResult[6].asda) + (getAllFoodcostResult.lastResult[7].asda) + (getAllFoodcostResult.lastResult[8].asda) + (getAllFoodcostResult.lastResult[9].asda))}"
+			/>
+	<s:Label id="individualAsda0" x="398" y="390" width="143" fontSize="30"
+			 text="£ {int((getAllFoodcostResult.lastResult[0].tesco) + (getAllFoodcostResult.lastResult[1].tesco) + (getAllFoodcostResult.lastResult[2].tesco) + (getAllFoodcostResult.lastResult[3].tesco) + (getAllFoodcostResult.lastResult[4].tesco) + (getAllFoodcostResult.lastResult[5].tesco) + (getAllFoodcostResult.lastResult[6].tesco) + (getAllFoodcostResult.lastResult[7].tesco) + (getAllFoodcostResult.lastResult[8].tesco) + (getAllFoodcostResult.lastResult[9].tesco))}"
+			 x.asdaVouchers="329" y.asdaVouchers="255"
+			 creationComplete.asdaVouchers="foodcost_creationCompleteHandler(event)"
+			 text.IndividualCost="£ {getFoodcostByNameResult.lastResult.tesco}"
+			 x.sainsburysVouchers="329" y.sainsburysVouchers="255"
+			 creationComplete.sainsburysVouchers="foodcost_creationCompleteHandler(event)"
+			 x.tescoVouchers="329" y.tescoVouchers="255"
+			 creationComplete.tescoVouchers="foodcost_creationCompleteHandler(event)"
+			 x.TotalCost="329" y.TotalCost="255"
+			 creationComplete.TotalCost="foodcost_creationCompleteHandler(event)"/>
+			<s:Label id="individualAsda1" x="398" y="487" width="143" fontSize="30"
+					 text="£ {((getAllFoodcostResult.lastResult[0].sainsburys) + (getAllFoodcostResult.lastResult[1].sainsburys) + (getAllFoodcostResult.lastResult[2].sainsburys) + (getAllFoodcostResult.lastResult[3].sainsburys) + (getAllFoodcostResult.lastResult[4].sainsburys) + (getAllFoodcostResult.lastResult[5].sainsburys) + (getAllFoodcostResult.lastResult[6].sainsburys) + (getAllFoodcostResult.lastResult[7].sainsburys) + (getAllFoodcostResult.lastResult[8].sainsburys) + (getAllFoodcostResult.lastResult[9].sainsburys))}"
+					 x.asdaVouchers="329" y.asdaVouchers="352"
+					 creationComplete.asdaVouchers="foodcost_creationCompleteHandler(event)"
+					 text.IndividualCost="£ {getFoodcostByNameResult.lastResult.sainsburys}"
+					 x.sainsburysVouchers="329" y.sainsburysVouchers="352"
+					 creationComplete.sainsburysVouchers="foodcost_creationCompleteHandler(event)"
+					 x.tescoVouchers="329" y.tescoVouchers="352"
+					 creationComplete.tescoVouchers="foodcost_creationCompleteHandler(event)"
+					 x.TotalCost="329" y.TotalCost="352"
+					 creationComplete.TotalCost="foodcost_creationCompleteHandler(event)"/>
+	<s:Button x="192" y="677" label="Back to Total Cost"
+			  x.asdaVouchers="176" y.asdaVouchers="434"
+			  label.asdaVouchers="View Individual Item Cost" fontSize.asdaVouchers="20"
+			  x.IndividualCost="257" y.IndividualCost="679" fontSize.IndividualCost="20"
+			  x.sainsburysVouchers="176" y.sainsburysVouchers="434"
+			  label.sainsburysVouchers="View Individual Item Cost" fontSize.sainsburysVouchers="20"
+			  x.tescoVouchers="176" y.tescoVouchers="434"
+			  label.tescoVouchers="View Individual Item Cost" fontSize.tescoVouchers="20"
+			  x.TotalCost="176" y.TotalCost="434" label.TotalCost="View Individual Item Cost"
+			  click.TotalCost="button1_clickHandler(event)" fontSize.TotalCost="20"/>
+	<s:Label includeIn="TotalCost,asdaVouchers,sainsburysVouchers,tescoVouchers" x="259" y="557"
+			 fontSize="20" text="Vouchers"
+			 x.TotalCost="260" y.TotalCost="554" fontWeight.TotalCost="bold"/>
+	<s:Button includeIn="TotalCost,asdaVouchers,sainsburysVouchers,tescoVouchers" x="365" y="612"
+			  width="33" height="24" label="+" fontSize="14"
+			  label.asdaVouchers="-" click.asdaVouchers="button5_clickHandler(event)"
+			  label.sainsburysVouchers="+" click.sainsburysVouchers="button11_clickHandler(event)"
+			  label.tescoVouchers="+" click.tescoVouchers="button8_clickHandler(event)"
+			  click.TotalCost="button2_clickHandler(event)"/>
+	<s:Button includeIn="TotalCost,asdaVouchers,sainsburysVouchers,tescoVouchers" x="365" y="665"
+			  width="33" height="24" label="+" fontSize="14"
+			  x.asdaVouchers="365" y.asdaVouchers="766"
+			  click.asdaVouchers="button6_clickHandler(event)"
+			  x.sainsburysVouchers="365" y.sainsburysVouchers="671" label.sainsburysVouchers="+"
+			  click.sainsburysVouchers="button12_clickHandler(event)"
+			  x.tescoVouchers="365" y.tescoVouchers="671" label.tescoVouchers="-"
+			  click.tescoVouchers="button9_clickHandler(event)"
+			  click.TotalCost="button3_clickHandler(event)"/>
+	<s:Image includeIn="TotalCost,asdaVouchers,sainsburysVouchers,tescoVouchers" x="204" y="607" width="116" height="37"
+			 source="assets/asdaLogo.png"/>
+	<s:Image includeIn="TotalCost,asdaVouchers,sainsburysVouchers,tescoVouchers" x="226" y="655"
+			 width="76" height="44" source="assets/tescoLogo.png"
+			 x.asdaVouchers="226" y.asdaVouchers="756" source.asdaVouchers="assets/tesco.png"
+			 x.sainsburysVouchers="226" y.sainsburysVouchers="665"
+			 source.sainsburysVouchers="assets/tesco.png"
+			 x.tescoVouchers="226" y.tescoVouchers="665" source.tescoVouchers="assets/tesco.png"
+			 source.TotalCost="assets/tesco.png"/>
+	<s:Image includeIn="TotalCost,asdaVouchers,sainsburysVouchers,tescoVouchers" x="224" y="707"
+			 width="87" height="44" source="assets/sainsburysLogo.png"
+			 x.asdaVouchers="224" y.asdaVouchers="810" source.asdaVouchers="assets/sainsburys.png"
+			 x.sainsburysVouchers="224" y.sainsburysVouchers="730"
+			 source.sainsburysVouchers="assets/sainsburys.png"
+			 x.tescoVouchers="224" y.tescoVouchers="808"
+			 source.tescoVouchers="assets/sainsburys.png"
+			 x.TotalCost="222" y.TotalCost="711" source.TotalCost="assets/sainsburys.png"/>
+	<s:Button includeIn="TotalCost,asdaVouchers,sainsburysVouchers,tescoVouchers" x="365" y="717"
+			  width="33" height="24" label="+" fontSize="14"
+			  x.asdaVouchers="365" y.asdaVouchers="818"
+			  click.asdaVouchers="button7_clickHandler(event)"
+			  x.sainsburysVouchers="365" y.sainsburysVouchers="736" label.sainsburysVouchers="-"
+			  click.sainsburysVouchers="button13_clickHandler(event)"
+			  x.tescoVouchers="365" y.tescoVouchers="818"
+			  click.tescoVouchers="button10_clickHandler(event)"
+			  click.TotalCost="button4_clickHandler(event)"/>
+	<s:Image includeIn="asdaVouchers" x="256" y="701" width="89" height="47"
+			 source="assets/BarcodeIcon.jpg"/>
+	<s:Label includeIn="asdaVouchers,sainsburysVouchers,tescoVouchers" x="240" y="667" fontSize="12"
+			 text="Buy 1 Kingsmill bread&#xd;get one free" textAlign="center"
+			 x.sainsburysVouchers="237" y.sainsburysVouchers="793"
+			 text.sainsburysVouchers="Sorry, no vouchers found"
+			 x.tescoVouchers="233" y.tescoVouchers="734"
+			 text.tescoVouchers="Sorry, no vouchers found"/>	
+	<s:Label id="label3" text="{getAllShoppinglistResult.lastResult[1].productName}" visible="false"/>
+	<s:Label id="label4" text="{getAllShoppinglistResult.lastResult[2].productName}" visible="false"/>
+	<s:Label id="label5" text="{getAllShoppinglistResult.lastResult[3].productName}" visible="false"/>
+	<s:Label id="label6" text="{getAllShoppinglistResult.lastResult[4].productName}" visible="false"/>
+	<s:Label id="label7" text="{getAllShoppinglistResult.lastResult[5].productName}" visible="false"/>
+	<s:Label id="label8" text="{getAllShoppinglistResult.lastResult[6].productName}" visible="false"/>
+	<s:Label id="label9" text="{getAllShoppinglistResult.lastResult[7].productName}" visible="false"/>
+	<s:Label id="label10" text="{getAllShoppinglistResult.lastResult[8].productName}" visible="false"/>
+	<s:Label id="label11" text="{getAllShoppinglistResult.lastResult[9].productName}" visible="false"/>
+	<s:Label id="hint0" includeIn="IndividualCost" x="63" y="73" fontWeight="bold"
+			 styleName="helpfulhint" text="Helpful Hint&#xd;Choose an item &#xd;from the list"/>
+	<s:Button id="hintBtn0" includeIn="IndividualCost" x="136" y="100" width="50" height="26"
+			  label="Hide" click="hintBtn0_clickHandler(event)" fontSize="12" styleName="helpfulhint"/>
+	<s:CalloutButton id="CalloutMenu0"
+					 includeIn="IndividualCost,TotalCost" x="27"
+					 y="812" label="..." horizontalPosition="auto" verticalPosition="auto">
+		<s:calloutLayout>
+			<s:HorizontalLayout/>
+		</s:calloutLayout>
+		<s:Button label="Annotate" 
+				  click="navigator.pushView(Annotate);"/>
+		<s:Button label="Meal Plan" 
+				  click="navigator.pushView(MealPlan1);"/>
+		<s:Button label="Settings" 
+				  click="navigator.pushView(Settings);" />
+	</s:CalloutButton>
+	<s:Label id="hint1" includeIn="TotalCost" x="385" y="556" fontWeight="bold" styleName="helpfulhint"
+			 text="Helpful Hint&#xd;View retrieved &#xd;vouchers"/>
+	<s:Button id="hintBtn1" includeIn="TotalCost" x="442" y="585" width="50" height="26" label="Hide"
+			  click="hintBtn1_clickHandler(event)" fontSize="12" styleName="helpfulhint"/>
+	<s:CalloutButton id="CalloutMenu1" includeIn="asdaVouchers" x="27" y="812" label="..."
+					 horizontalPosition="auto" verticalPosition="auto">
+		<s:calloutLayout>
+			<s:HorizontalLayout/>
+		</s:calloutLayout>
+		<s:Button label="Annotate" 
+				  click="navigator.pushView(Annotate);"/>
+		<s:Button label="Meal Plan" 
+				  click="navigator.pushView(MealPlan1);"/>
+		<s:Button label="Settings" 
+				  click="navigator.pushView(Settings);" />
+	</s:CalloutButton>
+	<s:CalloutButton id="CalloutMenu2" includeIn="tescoVouchers" x="27" y="812" label="..."
+					 horizontalPosition="auto" verticalPosition="auto">
+		<s:calloutLayout>
+			<s:HorizontalLayout/>
+		</s:calloutLayout>
+		<s:Button label="Annotate" 
+				  click="navigator.pushView(Annotate);"/>
+		<s:Button label="Meal Plan" 
+				  click="navigator.pushView(MealPlan1);"/>
+		<s:Button label="Settings" 
+				  click="navigator.pushView(Settings);" />
+	</s:CalloutButton>
+	<s:CalloutButton id="CalloutMenu3" includeIn="sainsburysVouchers" x="27" y="812" label="..."
+					 horizontalPosition="auto" verticalPosition="auto">
+		<s:calloutLayout>
+			<s:HorizontalLayout/>
+		</s:calloutLayout>
+		<s:Button label="Annotate" 
+				  click="navigator.pushView(Annotate);"/>
+		<s:Button label="Meal Plan" 
+				  click="navigator.pushView(MealPlan1);"/>
+		<s:Button label="Settings" 
+				  click="navigator.pushView(Settings);" />
+	</s:CalloutButton>
+	
+
+
+</s:View>

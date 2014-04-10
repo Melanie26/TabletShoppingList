@@ -1,0 +1,356 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:View xmlns:fx="http://ns.adobe.com/mxml/2009"
+		xmlns:s="library://ns.adobe.com/flex/spark"
+		xmlns:mealplanservice="services.mealplanservice.*"
+		xmlns:mealplanservice1="services.mealplanservice1.*"
+		xmlns:valueObjects="valueObjects.*"
+		xmlns:shoppinglistservice1="services.shoppinglistservice1.*"
+		xmlns:mealsuggestionservice="services.mealsuggestionservice.*"
+		title="MealPlan1"
+		backgroundColor.State1="#E4E7E2" title.State1="MealPlan"
+		backgroundColor.Suggestion="#E4E7E2">
+	<fx:Script>
+		<![CDATA[
+			import mx.events.FlexEvent;
+			
+			import spark.events.IndexChangeEvent;
+		
+			
+			
+			protected function textArea_creationCompleteHandler(event:FlexEvent):void
+			{
+				getAllMealplanResult.token = mealplanService1.getAllMealplan();
+			}
+			
+			
+			protected function textArea2_creationCompleteHandler(event:FlexEvent):void
+			{
+				getAllMealplanResult.token = mealplanService1.getAllMealplan();
+			}
+			
+			
+			protected function button_clickHandler(event:MouseEvent):void
+			{
+				var mealplan2:Mealplan = new Mealplan();
+				mealplan2.meal = mealTextInput.text;
+				
+				createMealplanResult.token = mealplanService1.createMealplan(mealplan2);
+				mealplanService1.commit();
+			}
+			
+			protected function button1_clickHandler(event:MouseEvent):void
+			{
+				currentState="Suggestion";
+			}
+			
+			
+			protected function ProductList_creationCompleteHandler(event:FlexEvent):void
+			{
+				getAllShoppinglistResult.token = shoppinglistService1.getAllShoppinglist();
+			}
+			
+			
+			protected function ProductList_changeHandler(event:IndexChangeEvent):void
+			{
+				getMealsuggestionByNameResult.token = mealsuggestionService.getMealsuggestionByName(ChosenItem.text);
+			}
+			
+			protected function Suggest_clickHandler(event:MouseEvent):void
+			{
+				AddBtn.visible = "true";
+				Suggest.styleName="clicked";
+				
+				if (AddBtn1.visible == true){
+					AddBtn1.visible = false;
+					Suggest1.styleName=null;
+				}else if (AddBtn2.visible== true){
+					AddBtn2.visible = false;
+					Suggest2.styleName=null;
+				}else if (AddBtn3.visible== true){
+					AddBtn3.visible = false;
+					Suggest3.styleName=null;
+					
+				}				
+				
+			}
+			
+			protected function Suggest1_clickHandler(event:MouseEvent):void
+			{
+				AddBtn1.visible = "true";
+				Suggest1.styleName="clicked";
+				
+				if (AddBtn.visible == true){
+					AddBtn.visible = false;
+					Suggest.styleName=null;
+				}else if (AddBtn2.visible== true){
+					AddBtn2.visible = false;
+					Suggest2.styleName=null;
+				}else if (AddBtn3.visible== true){
+					AddBtn3.visible = false;
+					Suggest3.styleName=null;
+					
+				}
+				
+			}
+			
+			protected function Suggest2_clickHandler(event:MouseEvent):void
+			{
+				AddBtn2.visible = "true";
+				Suggest2.styleName="clicked";
+				
+				if (AddBtn.visible == true){
+					AddBtn.visible = false;
+					Suggest.styleName=null;
+				}else if (AddBtn1.visible== true){
+					AddBtn1.visible = false;
+					Suggest1.styleName=null;
+				}else if (AddBtn3.visible== true){
+					AddBtn3.visible = false;
+					Suggest3.styleName=null;
+					
+				}
+				
+			}
+			
+			protected function Suggest3_clickHandler(event:MouseEvent):void
+			{
+				AddBtn3.visible = "true";
+				Suggest3.styleName="clicked";
+				
+				if (AddBtn.visible == true){
+					AddBtn.visible = false;
+					Suggest.styleName=null;
+				}else if (AddBtn1.visible== true){
+					AddBtn1.visible = false;
+					Suggest1.styleName=null;
+				}else if (AddBtn2.visible== true){
+					AddBtn2.visible = false;
+					Suggest2.styleName=null;
+					
+				}
+				
+			}
+			
+			
+			protected function AddBtn_clickHandler(event:MouseEvent):void
+			{
+				var mealplan2:Mealplan = new Mealplan();
+				mealplan2.meal = Suggest.text;
+				
+				createMealplanResult2.token = mealplanService1.createMealplan(mealplan2);
+				mealplanService1.commit();
+			}
+			
+			
+			protected function AddBtn1_clickHandler(event:MouseEvent):void
+			{
+				var mealplan2:Mealplan = new Mealplan();
+				mealplan2.meal = Suggest1.text;
+				
+				createMealplanResult3.token = mealplanService1.createMealplan(mealplan2);
+				mealplanService1.commit();
+			}
+			
+			
+			protected function AddBtn2_clickHandler(event:MouseEvent):void
+			{
+				var mealplan2:Mealplan = new Mealplan();
+				mealplan2.meal = Suggest2.text;
+				
+				createMealplanResult4.token = mealplanService1.createMealplan(mealplan2);
+				mealplanService1.commit();
+			}
+			
+			
+			protected function AddBtn3_clickHandler(event:MouseEvent):void
+			{
+				var mealplan2:Mealplan = new Mealplan();
+				mealplan2.meal = Suggest3.text;
+				
+				createMealplanResult5.token = mealplanService1.createMealplan(mealplan2);
+				mealplanService1.commit();
+			}
+			
+			protected function button2_clickHandler(event:MouseEvent):void
+			{
+				hint0.visible = false;
+				hintBtn0.visible = false;
+			}
+			
+		]]>
+	</fx:Script>
+	<s:states>
+		<s:State name="State1"/>
+		<s:State name="Suggestion"/>
+	</s:states>
+	<fx:Declarations>
+		<s:CallResponder id="getAllMealplanResult"/>
+		<mealplanservice1:MealplanService1 id="mealplanService1"/>
+		<valueObjects:Mealplan id="mealplan"/>
+		<s:CallResponder id="createMealplanResult"/>
+		<s:CallResponder id="getAllShoppinglistResult"/>
+		<shoppinglistservice1:ShoppinglistService1 id="shoppinglistService1"/>
+		<s:CallResponder id="getMealsuggestionByNameResult"/>
+		<mealsuggestionservice:MealsuggestionService id="mealsuggestionService"/>
+		<s:CallResponder id="createMealplanResult2"/>
+		<s:CallResponder id="createMealplanResult3"/>
+		<s:CallResponder id="createMealplanResult4"/>
+		<s:CallResponder id="createMealplanResult5"/>
+		</fx:Declarations>
+	<s:actionContent>
+		<s:Button label="Back to Shopping List" click="navigator.popToFirstView()"/>
+	</s:actionContent>
+	<s:titleContent>
+		<s:VGroup includeIn="Suggestion" width="289" height="118">
+			<s:HGroup width="200" height="14">
+			</s:HGroup>
+			<s:Label color="#FFFFFF" fontFamily="Arial" fontSize="28" fontStyle="normal"
+					 fontWeight="bold" lineThrough="false" text="Meal Plan"/>
+			<s:HGroup width="160" height="54" accentColor="#FF0E0E" alignmentBaseline="roman"
+					  breakOpportunity="auto" buttonMode="true" chromeColor="#95E64E"
+					  contentBackgroundColor="#FF00FC" dominantBaseline="auto" downColor="#CF0F0F">
+				<s:Button width="44" height="44" click="navigator.pushView(Cost)" icon="assets/PoundSign.png"/>
+				<s:Button width="44" height="44" label="kcal" click="navigator.pushView(Nutrition)" fontSize="12"/>
+				<s:Button width="44" height="44" click="navigator.pushView(Favourites)"
+						  enabled="true" icon="assets/heart(1).png"/>
+			</s:HGroup>
+		</s:VGroup>
+		<s:VGroup includeIn="State1" width="289" height="118">
+			<s:HGroup width="200" height="14">
+			</s:HGroup>
+			<s:Label color="#FFFFFF" fontFamily="Arial" fontSize="28" fontStyle="normal"
+					 fontWeight="bold" lineThrough="false" text="Meal Plan"/>
+			<s:HGroup width="160" height="54" accentColor="#FF0E0E" alignmentBaseline="roman"
+					  breakOpportunity="auto" buttonMode="true" chromeColor="#95E64E"
+					  contentBackgroundColor="#FF00FC" dominantBaseline="auto" downColor="#CF0F0F">
+				<s:Button width="44" height="44" click="navigator.pushView(Cost)" icon="assets/PoundSign.png"/>
+				<s:Button width="44" height="44" label="kcal" click="navigator.pushView(Nutrition)" fontSize="12"/>
+				<s:Button width="44" height="44" click="navigator.pushView(Favourites)"
+						  enabled="true" icon="assets/heart(1).png"/>
+			</s:HGroup>
+		</s:VGroup>
+	</s:titleContent>
+	<s:navigationContent>
+		<s:Image includeIn="Suggestion" source="assets/SLlogo.png"/>
+		<s:Image includeIn="State1" source="assets/SLlogo.png"/>
+	</s:navigationContent>
+	<s:Label includeIn="State1" x="31" y="15" width="167" height="96" backgroundColor="#61db10"
+			 fontSize="20" fontWeight="bold" text="&#xd;Sunday" textAlign="center"
+			 verticalAlign="middle"/>
+	<s:Label id="textArea" includeIn="State1" x="197" y="15" width="373" height="96"
+			 backgroundColor="#61db10" creationComplete="textArea_creationCompleteHandler(event)"
+			 fontSize="20" text="{getAllMealplanResult.lastResult[0].meal}" textAlign="center"
+			 verticalAlign="middle"/>
+	<s:Label id="textArea2" includeIn="State1" x="197" y="112" width="373" height="96"
+			 backgroundColor="#FFFEFE" creationComplete="textArea2_creationCompleteHandler(event)"
+			 fontSize="20" text="{getAllMealplanResult.lastResult[1].meal}" textAlign="center"
+			 verticalAlign="middle"/>
+	<s:Label includeIn="State1" x="197" y="209" width="373" height="96" backgroundColor="#61db10"
+			 creationComplete="textArea2_creationCompleteHandler(event)" fontSize="20"
+			 text="{getAllMealplanResult.lastResult[2].meal}" textAlign="center"
+			 verticalAlign="middle"/>
+	<s:Label includeIn="State1" x="197" y="306" width="373" height="96" backgroundColor="#FAF9F9"
+			 creationComplete="textArea2_creationCompleteHandler(event)" fontSize="20"
+			 text="{getAllMealplanResult.lastResult[3].meal}" textAlign="center"
+			 verticalAlign="middle"/>
+	<s:Label includeIn="State1" x="197" y="403" width="373" height="96" backgroundColor="#61db10"
+			 creationComplete="textArea2_creationCompleteHandler(event)" fontSize="20"
+			 text="{getAllMealplanResult.lastResult[4].meal}" textAlign="center"
+			 verticalAlign="middle"/>
+	<s:Label includeIn="State1" x="197" y="500" width="373" height="96" backgroundColor="#FAF9F9"
+			 creationComplete="textArea2_creationCompleteHandler(event)" fontSize="20"
+			 text="{getAllMealplanResult.lastResult[5].meal}" textAlign="center"
+			 verticalAlign="middle"/>
+	<s:Label includeIn="State1" x="197" y="597" width="373" height="96" backgroundColor="#61db10"
+			 creationComplete="textArea2_creationCompleteHandler(event)" fontSize="20"
+			 text="{getAllMealplanResult.lastResult[6].meal}" textAlign="center"
+			 verticalAlign="middle"/>
+	<s:Label includeIn="State1" x="31" y="209" width="167" height="96" backgroundColor="#61db10"
+			 fontSize="20" fontWeight="bold" text="&#xd;Tuesday" textAlign="center"
+			 verticalAlign="middle"/>
+	<s:Label includeIn="State1" x="31" y="306" width="167" height="96" backgroundColor="#FAF9F9"
+			 fontSize="20" fontWeight="bold" text="&#xd;Wednesday" textAlign="center"
+			 verticalAlign="middle"/>
+	<s:Label includeIn="State1" x="31" y="112" width="167" height="96" backgroundColor="#FBFDFA"
+			 fontSize="20" fontWeight="bold" text="&#xd;Monday" textAlign="center"
+			 verticalAlign="middle"/>
+	<s:Label includeIn="State1" x="31" y="500" width="167" height="96" backgroundColor="#FAF9F9"
+			 fontSize="20" fontWeight="bold" text="&#xd;Friday" textAlign="center"
+			 verticalAlign="middle"/>
+	<s:Label includeIn="State1" x="31" y="597" width="167" height="96" backgroundColor="#61db10"
+			 fontSize="20" fontWeight="bold" text="&#xd;Saturday" textAlign="center"
+			 verticalAlign="middle"/>
+	<s:Label includeIn="State1" x="31" y="403" width="167" height="96" backgroundColor="#61db10"
+			 fontSize="20" fontWeight="bold" text="&#xd;Thursday" textAlign="center"
+			 verticalAlign="middle"/>
+	<s:Form includeIn="State1" x="104" y="701" backgroundColor="#909090" defaultButton="{button}">
+		<s:FormItem label="Meal" backgroundColor="#B3B3B3">
+			<s:TextInput id="mealTextInput" text="{mealplan.meal}"/>
+		</s:FormItem>
+		<s:FormItem backgroundColor="#909090">
+			<s:Button id="button" label="Add Meal" click="button_clickHandler(event)"/>
+		</s:FormItem>
+	</s:Form>
+	<s:Label includeIn="Suggestion" x="113" y="68" fontSize="20" fontWeight="bold"
+			 text="Select item from list to view meal suggestions"/>
+	<s:Label includeIn="Suggestion" x="260" y="230" fontSize="20" fontWeight="bold"
+			 text="Meal Suggestions"/>
+	<s:List id="ProductList" includeIn="Suggestion" x="0" y="128" width="127" height="592"
+			change="ProductList_changeHandler(event)"
+			creationComplete="ProductList_creationCompleteHandler(event)" fontSize="20"
+			labelField="productName">
+		<s:AsyncListView list="{getAllShoppinglistResult.lastResult}"/>
+			
+	</s:List>
+	<s:Label id="ChosenItem" includeIn="Suggestion" x="320" y="128" fontSize="27" text="{ProductList.selectedItem.productName}"/>
+	<s:Label id="Suggest" includeIn="Suggestion" x="188" y="293" click="Suggest_clickHandler(event)"
+			 fontSize="24" text="{getMealsuggestionByNameResult.lastResult[0].mealSuggestion}"/>
+	<s:Label id="Suggest1" includeIn="Suggestion" x="188" y="330"
+			 click="Suggest1_clickHandler(event)" fontSize="24"
+			 text="{getMealsuggestionByNameResult.lastResult[1].mealSuggestion}"/>
+	<s:Label id="Suggest2" includeIn="Suggestion" x="188" y="367"
+			 click="Suggest2_clickHandler(event)" fontSize="24"
+			 text="{getMealsuggestionByNameResult.lastResult[2].mealSuggestion}"/>
+	<s:Label id="Suggest3" includeIn="Suggestion" x="188" y="400"
+			 click="Suggest3_clickHandler(event)" fontSize="24"
+			 text="{getMealsuggestionByNameResult.lastResult[3].mealSuggestion}"/>
+	
+	<s:Button id="AddBtn" includeIn="Suggestion" visible="false" x="492" y="292" width="30"
+			  height="30" label="+" click="AddBtn_clickHandler(event)" fontSize="18"/>
+	<s:Button id="AddBtn1" includeIn="Suggestion" visible="false" x="492" y="330" width="30"
+			  height="30" label="+" click="AddBtn1_clickHandler(event)" fontSize="18"/>
+	<s:Button id="AddBtn2" includeIn="Suggestion" visible="false" x="492" y="366" width="30"
+			  height="30" label="+" click="AddBtn2_clickHandler(event)" fontSize="18"/>
+	<s:Button id="AddBtn3" includeIn="Suggestion" visible="false" x="492" y="402" width="30"
+			  height="30" label="+" click="AddBtn3_clickHandler(event)" fontSize="18"/>
+	<s:Button includeIn="State1" x="328" y="780" label="Need Suggestions?"
+			  click="button1_clickHandler(event)"/>
+	<s:CalloutButton id="CalloutMenu1" includeIn="State1" x="27" y="812" width="41" label="..."
+					 horizontalPosition="auto" verticalPosition="auto">
+		<s:calloutLayout>
+			<s:HorizontalLayout/>
+		</s:calloutLayout>
+		<s:Button label="Annotate" 
+				  click="navigator.pushView(Annotate);"/>
+		<s:Button label="Meal Plan" 
+				  click="navigator.pushView(MealPlan1);"/>
+		<s:Button label="Settings" 
+				  click="navigator.pushView(Settings);" />
+	</s:CalloutButton>
+	<s:CalloutButton id="CalloutMenu0" includeIn="Suggestion" x="27" y="812" width="41" label="..."
+					 horizontalPosition="auto" verticalPosition="auto">
+		<s:calloutLayout>
+			<s:HorizontalLayout/>
+		</s:calloutLayout>
+		<s:Button label="Annotate" 
+				  click="navigator.pushView(Annotate);"/>
+		<s:Button label="Meal Plan" 
+				  click="navigator.pushView(MealPlan1);"/>
+		<s:Button label="Settings" 
+				  click="navigator.pushView(Settings);" />
+	</s:CalloutButton>
+	<s:Label id="hint0" includeIn="State1" x="432" y="831" fontWeight="bold" styleName="helpfulhint"
+			 text="Helpful Hint&#xd;Click this button to &#xd;get meal suggestions"/>
+	<s:Button id="hintBtn0" includeIn="State1" x="520" y="816" width="50" height="26" label="Hide"
+			  click="button2_clickHandler(event)" fontSize="12" styleName="helpfulhint"/>
+</s:View>

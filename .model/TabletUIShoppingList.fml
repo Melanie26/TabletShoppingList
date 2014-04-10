@@ -1,0 +1,710 @@
+
+<model xmlns="http://ns.adobe.com/Fiber/1.0">
+  <annotation name="ActionScriptGeneration">
+    <item name="FullyQualifyReferences">true</item>
+  </annotation>
+  <service name="FoodnutritionService">
+    <annotation name="ActionScriptGeneration">
+      <item name="Source">FoodnutritionService</item>
+      <item name="ServiceType">RemoteObject</item>
+      <item name="Package">services.foodnutritionservice</item>
+      <item name="Endpoint">http://192.168.0.10:80/TabletUIShoppingList/gateway.php</item>
+      <item name="Destination">FoodnutritionService</item>
+    </annotation>
+    <annotation name="ServiceTypeGroup">
+      <item name="ServiceBackendType">PHP</item>
+    </annotation>
+    <annotation name="ServiceConfig">
+      <item name="PHP_RELATIVE_LOCATION">TabletUIShoppingList/services/FoodnutritionService.php</item>
+      <item name="PHP_SERVER_ROOT">C:/wamp/www</item>
+      <item name="DEFAULT_ENTITY_PACKAGE">valueObjects</item>
+      <item name="PHP_SERVICES_FOLDER">C:/wamp/www/TabletUIShoppingList/services</item>
+      <item name="PHP_LOCATION">C:/wamp/www/TabletUIShoppingList/services/FoodnutritionService.php</item>
+      <item name="LINKED_FILE">FoodnutritionService.php</item>
+      <item name="PHP_SERVER_ROOT_URL">http://192.168.0.10:80/</item>
+      <item name="ABSOLUTE_ENDPOINT">http://192.168.0.10:80/TabletUIShoppingList/gateway.php</item>
+      <item name="PHP_CLASS_NAME">FoodnutritionService</item>
+    </annotation>
+    <function name="getAllFoodnutrition" return-type="Foodnutrition[]">
+      <annotation name="analyze group">
+        <item name="analyzed">true</item>
+      </annotation>
+      <annotation name="original signature">
+        <item name="returnType">opaque</item>
+      </annotation>
+    </function>
+    <function name="getFoodnutritionByID" return-type="Foodnutrition">
+      <annotation name="analyze group">
+        <item name="analyzed">true</item>
+      </annotation>
+      <annotation name="original signature">
+        <item name="inputParams">opaque</item>
+        <item name="returnType">opaque</item>
+      </annotation>
+      <parameter name="itemID" type="integer"/>
+    </function>
+    <function name="createFoodnutrition" return-type="integer">
+      <annotation name="analyze group">
+        <item name="analyzed">true</item>
+      </annotation>
+      <annotation name="original signature">
+        <item name="inputParams">opaque</item>
+        <item name="returnType">opaque</item>
+      </annotation>
+      <parameter name="item" type="Foodnutrition"/>
+    </function>
+    <function name="updateFoodnutrition" return-type="void">
+      <annotation name="analyze group">
+        <item name="analyzed">true</item>
+      </annotation>
+      <annotation name="original signature">
+        <item name="inputParams">opaque</item>
+        <item name="returnType">opaque</item>
+      </annotation>
+      <parameter name="item" type="Foodnutrition"/>
+    </function>
+    <function name="deleteFoodnutrition" return-type="void">
+      <annotation name="analyze group">
+        <item name="analyzed">true</item>
+      </annotation>
+      <annotation name="original signature">
+        <item name="inputParams">opaque</item>
+        <item name="returnType">opaque</item>
+      </annotation>
+      <parameter name="itemID" type="integer"/>
+    </function>
+    <function name="count" return-type="integer">
+      <annotation name="analyze group">
+        <item name="analyzed">true</item>
+      </annotation>
+      <annotation name="original signature">
+        <item name="returnType">opaque</item>
+      </annotation>
+    </function>
+    <function name="getFoodnutrition_paged" return-type="Foodnutrition[]">
+      <annotation name="analyze group">
+        <item name="analyzed">true</item>
+      </annotation>
+      <annotation name="original signature">
+        <item name="inputParams">opaque,opaque</item>
+        <item name="returnType">opaque</item>
+      </annotation>
+      <parameter name="startIndex" type="integer"/>
+      <parameter name="numItems" type="integer"/>
+    </function>
+    <function name="getFoodnutritionByName" return-type="Foodnutrition">
+      <annotation name="analyze group">
+        <item name="analyzed">true</item>
+      </annotation>
+      <annotation name="ValidProperties">
+        <item name="propertySpecifier">foodID,foodName,calories,fat,ofWhichSugars,carbohydrate,ofWhichSugarsCarb,protein,salt</item>
+      </annotation>
+      <annotation name="original signature">
+        <item name="inputParams">opaque</item>
+        <item name="returnType">opaque</item>
+      </annotation>
+      <parameter name="itemName" type="string"/>
+    </function>
+  </service>
+  <entity name="Foodnutrition" persistent="true">
+    <annotation name="EntityProperties">
+      <item name="EntityOriginalName">Foodnutrition</item>
+    </annotation>
+    <annotation name="service Group">
+      <item name="service">FoodnutritionService</item>
+    </annotation>
+    <annotation name="ServerProperties">
+      <item name="IncludeRemoteClass">nonempty</item>
+    </annotation>
+    <annotation name="DataManagement">
+      <item name="create">createFoodnutrition</item>
+      <item name="update">updateFoodnutrition</item>
+      <item name="get">getFoodnutritionByID</item>
+      <item name="delete">deleteFoodnutrition</item>
+      <item name="fillFunc">getAllFoodnutrition,getFoodnutrition_paged</item>
+      <item name="managingService">FoodnutritionService</item>
+      <item name="findItem">getFoodnutritionByName</item>
+    </annotation>
+    <annotation name="getFoodnutritionByID">
+      <item name="propertySpecifier">foodID,foodName,calories,fat,ofWhichSugars,carbohydrate,ofWhichSugarsCarb,protein,salt</item>
+    </annotation>
+    <annotation name="getAllFoodnutrition">
+      <item name="propertySpecifier">foodID,foodName,calories,fat,ofWhichSugars,carbohydrate,ofWhichSugarsCarb,protein,salt</item>
+    </annotation>
+    <annotation name="getFoodnutrition_paged">
+      <item name="propertySpecifier">foodID,foodName,calories,fat,ofWhichSugars,carbohydrate,ofWhichSugarsCarb,protein,salt</item>
+      <item name="pagingEnabled">true</item>
+      <item name="positionalPagingParameters">true</item>
+      <item name="countOperation">count</item>
+    </annotation>
+    <annotation name="ActionScriptGeneration">
+      <item name="Package">valueObjects</item>
+    </annotation>
+    <annotation name="getFoodnutritionByName">
+      <item name="propertySpecifier">foodID,foodName,calories,fat,ofWhichSugars,carbohydrate,ofWhichSugarsCarb,protein,salt</item>
+    </annotation>
+    <id name="foodID" type="integer"/>
+    <property name="foodName" type="string"/>
+    <property name="calories" type="integer"/>
+    <property name="fat" type="double"/>
+    <property name="ofWhichSugars" type="double"/>
+    <property name="carbohydrate" type="double"/>
+    <property name="ofWhichSugarsCarb" type="double"/>
+    <property name="protein" type="double"/>
+    <property name="salt" type="double"/>
+  </entity>
+  <service name="MealsuggestionService">
+    <annotation name="ActionScriptGeneration">
+      <item name="Source">MealsuggestionService</item>
+      <item name="ServiceType">RemoteObject</item>
+      <item name="Package">services.mealsuggestionservice</item>
+      <item name="Endpoint">http://192.168.0.10:80/TabletUIShoppingList/gateway.php</item>
+      <item name="Destination">MealsuggestionService</item>
+    </annotation>
+    <annotation name="ServiceTypeGroup">
+      <item name="ServiceBackendType">PHP</item>
+    </annotation>
+    <annotation name="ServiceConfig">
+      <item name="PHP_RELATIVE_LOCATION">TabletUIShoppingList/services/MealsuggestionService.php</item>
+      <item name="PHP_SERVER_ROOT">C:/wamp/www</item>
+      <item name="DEFAULT_ENTITY_PACKAGE">valueObjects</item>
+      <item name="PHP_SERVICES_FOLDER">C:/wamp/www/TabletUIShoppingList/services</item>
+      <item name="PHP_LOCATION">C:/wamp/www/TabletUIShoppingList/services/MealsuggestionService.php</item>
+      <item name="LINKED_FILE">MealsuggestionService.php</item>
+      <item name="PHP_SERVER_ROOT_URL">http://192.168.0.10:80/</item>
+      <item name="ABSOLUTE_ENDPOINT">http://192.168.0.10:80/TabletUIShoppingList/gateway.php</item>
+      <item name="PHP_CLASS_NAME">MealsuggestionService</item>
+    </annotation>
+    <function name="getAllMealsuggestion" return-type="Mealsuggestion[]">
+      <annotation name="analyze group">
+        <item name="analyzed">true</item>
+      </annotation>
+      <annotation name="original signature">
+        <item name="returnType">opaque</item>
+      </annotation>
+    </function>
+    <function name="getMealsuggestionByID" return-type="Mealsuggestion">
+      <annotation name="analyze group">
+        <item name="analyzed">true</item>
+      </annotation>
+      <annotation name="original signature">
+        <item name="inputParams">opaque</item>
+        <item name="returnType">opaque</item>
+      </annotation>
+      <parameter name="itemID" type="integer"/>
+    </function>
+    <function name="createMealsuggestion" return-type="integer">
+      <annotation name="analyze group">
+        <item name="analyzed">true</item>
+      </annotation>
+      <annotation name="original signature">
+        <item name="inputParams">opaque</item>
+        <item name="returnType">opaque</item>
+      </annotation>
+      <parameter name="item" type="Mealsuggestion"/>
+    </function>
+    <function name="updateMealsuggestion" return-type="void">
+      <annotation name="analyze group">
+        <item name="analyzed">true</item>
+      </annotation>
+      <annotation name="original signature">
+        <item name="inputParams">opaque</item>
+        <item name="returnType">opaque</item>
+      </annotation>
+      <parameter name="item" type="Mealsuggestion"/>
+    </function>
+    <function name="deleteMealsuggestion" return-type="void">
+      <annotation name="analyze group">
+        <item name="analyzed">true</item>
+      </annotation>
+      <annotation name="original signature">
+        <item name="inputParams">opaque</item>
+        <item name="returnType">opaque</item>
+      </annotation>
+      <parameter name="itemID" type="integer"/>
+    </function>
+    <function name="count" return-type="integer">
+      <annotation name="analyze group">
+        <item name="analyzed">true</item>
+      </annotation>
+      <annotation name="original signature">
+        <item name="returnType">opaque</item>
+      </annotation>
+    </function>
+    <function name="getMealsuggestion_paged" return-type="Mealsuggestion[]">
+      <annotation name="analyze group">
+        <item name="analyzed">true</item>
+      </annotation>
+      <annotation name="original signature">
+        <item name="inputParams">opaque,opaque</item>
+        <item name="returnType">opaque</item>
+      </annotation>
+      <parameter name="startIndex" type="integer"/>
+      <parameter name="numItems" type="integer"/>
+    </function>
+    <function name="getMealsuggestionByName" return-type="Mealsuggestion[]">
+      <annotation name="analyze group">
+        <item name="analyzed">true</item>
+      </annotation>
+      <annotation name="ValidProperties">
+        <item name="propertySpecifier">mainIngredient,mealSuggestion,mealID</item>
+      </annotation>
+      <annotation name="original signature">
+        <item name="inputParams">opaque</item>
+        <item name="returnType">opaque</item>
+      </annotation>
+      <parameter name="itemName" type="string"/>
+    </function>
+  </service>
+  <entity name="Mealsuggestion" persistent="true">
+    <annotation name="EntityProperties">
+      <item name="EntityOriginalName">Mealsuggestion</item>
+    </annotation>
+    <annotation name="service Group">
+      <item name="service">MealsuggestionService</item>
+    </annotation>
+    <annotation name="ServerProperties">
+      <item name="IncludeRemoteClass">nonempty</item>
+    </annotation>
+    <annotation name="DataManagement">
+      <item name="create">createMealsuggestion</item>
+      <item name="update">updateMealsuggestion</item>
+      <item name="get">getMealsuggestionByID</item>
+      <item name="delete">deleteMealsuggestion</item>
+      <item name="fillFunc">getAllMealsuggestion,getMealsuggestion_paged,getMealsuggestionByName</item>
+      <item name="managingService">MealsuggestionService</item>
+    </annotation>
+    <annotation name="getMealsuggestionByID">
+      <item name="propertySpecifier">mainIngredient,mealSuggestion,mealID</item>
+    </annotation>
+    <annotation name="getAllMealsuggestion">
+      <item name="propertySpecifier">mainIngredient,mealSuggestion,mealID</item>
+    </annotation>
+    <annotation name="getMealsuggestion_paged">
+      <item name="propertySpecifier">mainIngredient,mealSuggestion,mealID</item>
+      <item name="pagingEnabled">true</item>
+      <item name="positionalPagingParameters">true</item>
+      <item name="countOperation">count</item>
+    </annotation>
+    <annotation name="ActionScriptGeneration">
+      <item name="Package">valueObjects</item>
+    </annotation>
+    <annotation name="getMealsuggestionByName">
+      <item name="propertySpecifier">mainIngredient,mealSuggestion,mealID</item>
+    </annotation>
+    <property name="mainIngredient" type="string"/>
+    <property name="mealSuggestion" type="string"/>
+    <id name="mealID" type="integer"/>
+  </entity>
+  <service name="ShoppinglistService1">
+    <annotation name="ActionScriptGeneration">
+      <item name="Source">ShoppinglistService1</item>
+      <item name="ServiceType">RemoteObject</item>
+      <item name="Package">services.shoppinglistservice1</item>
+      <item name="Endpoint">http://192.168.0.10:80/TabletUIShoppingList/gateway.php</item>
+      <item name="Destination">ShoppinglistService1</item>
+    </annotation>
+    <annotation name="ServiceTypeGroup">
+      <item name="ServiceBackendType">PHP</item>
+    </annotation>
+    <annotation name="ServiceConfig">
+      <item name="PHP_RELATIVE_LOCATION">TabletUIShoppingList/services/ShoppinglistService1.php</item>
+      <item name="PHP_SERVER_ROOT">C:/wamp/www</item>
+      <item name="DEFAULT_ENTITY_PACKAGE">valueObjects</item>
+      <item name="PHP_SERVICES_FOLDER">C:/wamp/www/TabletUIShoppingList/services</item>
+      <item name="PHP_LOCATION">C:/wamp/www/TabletUIShoppingList/services/ShoppinglistService1.php</item>
+      <item name="LINKED_FILE">ShoppinglistService1.php</item>
+      <item name="PHP_SERVER_ROOT_URL">http://192.168.0.10:80/</item>
+      <item name="ABSOLUTE_ENDPOINT">http://192.168.0.10:80/TabletUIShoppingList/gateway.php</item>
+      <item name="PHP_CLASS_NAME">ShoppinglistService1</item>
+    </annotation>
+    <function name="getAllShoppinglist" return-type="Shoppinglist[]">
+      <annotation name="analyze group">
+        <item name="analyzed">true</item>
+      </annotation>
+      <annotation name="original signature">
+        <item name="returnType">opaque</item>
+      </annotation>
+    </function>
+    <function name="getShoppinglistByID" return-type="Shoppinglist">
+      <annotation name="analyze group">
+        <item name="analyzed">true</item>
+      </annotation>
+      <annotation name="original signature">
+        <item name="inputParams">opaque</item>
+        <item name="returnType">opaque</item>
+      </annotation>
+      <parameter name="itemID" type="integer"/>
+    </function>
+    <function name="createShoppinglist" return-type="integer">
+      <annotation name="analyze group">
+        <item name="analyzed">true</item>
+      </annotation>
+      <annotation name="original signature">
+        <item name="inputParams">opaque</item>
+        <item name="returnType">opaque</item>
+      </annotation>
+      <parameter name="item" type="Shoppinglist"/>
+    </function>
+    <function name="updateShoppinglist" return-type="void">
+      <annotation name="analyze group">
+        <item name="analyzed">true</item>
+      </annotation>
+      <annotation name="original signature">
+        <item name="inputParams">opaque</item>
+        <item name="returnType">opaque</item>
+      </annotation>
+      <parameter name="item" type="Shoppinglist"/>
+    </function>
+    <function name="deleteShoppinglist" return-type="void">
+      <annotation name="analyze group">
+        <item name="analyzed">true</item>
+      </annotation>
+      <annotation name="original signature">
+        <item name="inputParams">opaque</item>
+        <item name="returnType">opaque</item>
+      </annotation>
+      <parameter name="itemName" type="string"/>
+    </function>
+    <function name="count" return-type="integer">
+      <annotation name="analyze group">
+        <item name="analyzed">true</item>
+      </annotation>
+      <annotation name="original signature">
+        <item name="returnType">opaque</item>
+      </annotation>
+    </function>
+    <function name="getShoppinglist_paged" return-type="Shoppinglist[]">
+      <annotation name="analyze group">
+        <item name="analyzed">true</item>
+      </annotation>
+      <annotation name="original signature">
+        <item name="inputParams">opaque,opaque</item>
+        <item name="returnType">opaque</item>
+      </annotation>
+      <parameter name="startIndex" type="integer"/>
+      <parameter name="numItems" type="integer"/>
+    </function>
+    <function name="getShoppinglistByName" return-type="Shoppinglist">
+      <annotation name="analyze group">
+        <item name="analyzed">true</item>
+      </annotation>
+      <annotation name="ValidProperties">
+        <item name="propertySpecifier">productID,productName,addedBy</item>
+      </annotation>
+      <annotation name="original signature">
+        <item name="inputParams">opaque</item>
+        <item name="returnType">opaque</item>
+      </annotation>
+      <parameter name="itemName" type="string"/>
+    </function>
+  </service>
+  <entity name="Shoppinglist" persistent="true">
+    <annotation name="EntityProperties">
+      <item name="EntityOriginalName">Shoppinglist</item>
+    </annotation>
+    <annotation name="service Group">
+      <item name="service">ShoppinglistService1</item>
+    </annotation>
+    <annotation name="ServerProperties">
+      <item name="IncludeRemoteClass">nonempty</item>
+    </annotation>
+    <annotation name="DataManagement">
+      <item name="create">createShoppinglist</item>
+      <item name="update">updateShoppinglist</item>
+      <item name="get">getShoppinglistByID</item>
+      <item name="fillFunc">getAllShoppinglist,getShoppinglist_paged</item>
+      <item name="managingService">ShoppinglistService1</item>
+      <item name="findItem">getShoppinglistByName</item>
+    </annotation>
+    <annotation name="getShoppinglistByID">
+      <item name="propertySpecifier">productID,productName,addedBy</item>
+    </annotation>
+    <annotation name="getAllShoppinglist">
+      <item name="propertySpecifier">productID,productName,addedBy</item>
+    </annotation>
+    <annotation name="getShoppinglist_paged">
+      <item name="propertySpecifier">productID,productName,addedBy</item>
+      <item name="pagingEnabled">true</item>
+      <item name="positionalPagingParameters">true</item>
+      <item name="countOperation">count</item>
+    </annotation>
+    <annotation name="ActionScriptGeneration">
+      <item name="Package">valueObjects</item>
+    </annotation>
+    <annotation name="getShoppinglistByName">
+      <item name="propertySpecifier">productID,productName,addedBy</item>
+    </annotation>
+    <id name="productID" type="integer"/>
+    <property name="productName" type="string"/>
+    <property name="addedBy" type="string"/>
+  </entity>
+  <service name="FoodcostService">
+    <annotation name="ActionScriptGeneration">
+      <item name="Source">FoodcostService</item>
+      <item name="ServiceType">RemoteObject</item>
+      <item name="Package">services.foodcostservice</item>
+      <item name="Endpoint">http://192.168.0.10:80/TabletUIShoppingList/gateway.php</item>
+      <item name="Destination">FoodcostService</item>
+    </annotation>
+    <annotation name="ServiceTypeGroup">
+      <item name="ServiceBackendType">PHP</item>
+    </annotation>
+    <annotation name="ServiceConfig">
+      <item name="PHP_RELATIVE_LOCATION">TabletUIShoppingList/services/FoodcostService.php</item>
+      <item name="PHP_SERVER_ROOT">C:/wamp/www</item>
+      <item name="DEFAULT_ENTITY_PACKAGE">valueObjects</item>
+      <item name="PHP_SERVICES_FOLDER">C:/wamp/www/TabletUIShoppingList/services</item>
+      <item name="PHP_LOCATION">C:/wamp/www/TabletUIShoppingList/services/FoodcostService.php</item>
+      <item name="LINKED_FILE">FoodcostService.php</item>
+      <item name="PHP_SERVER_ROOT_URL">http://192.168.0.10:80/</item>
+      <item name="ABSOLUTE_ENDPOINT">http://192.168.0.10:80/TabletUIShoppingList/gateway.php</item>
+      <item name="PHP_CLASS_NAME">FoodcostService</item>
+    </annotation>
+    <function name="getAllFoodcost" return-type="Foodcost[]">
+      <annotation name="analyze group">
+        <item name="analyzed">true</item>
+      </annotation>
+      <annotation name="original signature">
+        <item name="returnType">opaque</item>
+      </annotation>
+    </function>
+    <function name="getFoodcostByID" return-type="Foodcost">
+      <annotation name="analyze group">
+        <item name="analyzed">true</item>
+      </annotation>
+      <annotation name="original signature">
+        <item name="inputParams">opaque</item>
+        <item name="returnType">opaque</item>
+      </annotation>
+      <parameter name="itemID" type="integer"/>
+    </function>
+    <function name="createFoodcost" return-type="integer">
+      <annotation name="analyze group">
+        <item name="analyzed">true</item>
+      </annotation>
+      <annotation name="original signature">
+        <item name="inputParams">opaque</item>
+        <item name="returnType">opaque</item>
+      </annotation>
+      <parameter name="item" type="Foodcost"/>
+    </function>
+    <function name="updateFoodcost" return-type="void">
+      <annotation name="analyze group">
+        <item name="analyzed">true</item>
+      </annotation>
+      <annotation name="original signature">
+        <item name="inputParams">opaque</item>
+        <item name="returnType">opaque</item>
+      </annotation>
+      <parameter name="item" type="Foodcost"/>
+    </function>
+    <function name="deleteFoodcost" return-type="void">
+      <annotation name="analyze group">
+        <item name="analyzed">true</item>
+      </annotation>
+      <annotation name="original signature">
+        <item name="inputParams">opaque</item>
+        <item name="returnType">opaque</item>
+      </annotation>
+      <parameter name="itemID" type="integer"/>
+    </function>
+    <function name="count" return-type="integer">
+      <annotation name="analyze group">
+        <item name="analyzed">true</item>
+      </annotation>
+      <annotation name="original signature">
+        <item name="returnType">opaque</item>
+      </annotation>
+    </function>
+    <function name="getFoodcost_paged" return-type="Foodcost[]">
+      <annotation name="analyze group">
+        <item name="analyzed">true</item>
+      </annotation>
+      <annotation name="original signature">
+        <item name="inputParams">opaque,opaque</item>
+        <item name="returnType">opaque</item>
+      </annotation>
+      <parameter name="startIndex" type="integer"/>
+      <parameter name="numItems" type="integer"/>
+    </function>
+    <function name="getFoodcostByName" return-type="Foodcost">
+      <annotation name="analyze group">
+        <item name="analyzed">true</item>
+      </annotation>
+      <annotation name="ValidProperties">
+        <item name="propertySpecifier">productID,productName,asda,tesco,sainsburys</item>
+      </annotation>
+      <annotation name="original signature">
+        <item name="inputParams">opaque</item>
+        <item name="returnType">opaque</item>
+      </annotation>
+      <parameter name="itemName" type="string"/>
+    </function>
+  </service>
+  <entity name="Foodcost" persistent="true">
+    <annotation name="EntityProperties">
+      <item name="EntityOriginalName">Foodcost</item>
+    </annotation>
+    <annotation name="service Group">
+      <item name="service">FoodcostService,FoodcostServiceDummy</item>
+    </annotation>
+    <annotation name="ServerProperties">
+      <item name="IncludeRemoteClass">nonempty</item>
+    </annotation>
+    <annotation name="DataManagement">
+      <item name="create">createFoodcost</item>
+      <item name="update">updateFoodcost</item>
+      <item name="get">getFoodcostByID</item>
+      <item name="delete">deleteFoodcost</item>
+      <item name="fillFunc">getAllFoodcost,getFoodcost_paged</item>
+      <item name="managingService">FoodcostService</item>
+    </annotation>
+    <annotation name="getFoodcostByID">
+      <item name="propertySpecifier">productID,productName,asda,tesco,sainsburys</item>
+    </annotation>
+    <annotation name="getAllFoodcost">
+      <item name="propertySpecifier">productID,productName,asda,tesco,sainsburys</item>
+    </annotation>
+    <annotation name="getFoodcost_paged">
+      <item name="propertySpecifier">productID,productName,asda,tesco,sainsburys</item>
+      <item name="pagingEnabled">true</item>
+      <item name="positionalPagingParameters">true</item>
+      <item name="countOperation">count</item>
+    </annotation>
+    <annotation name="ActionScriptGeneration">
+      <item name="Package">valueObjects</item>
+    </annotation>
+    <id name="productID" type="integer"/>
+    <property name="productName" type="string"/>
+    <property name="asda" type="double"/>
+    <property name="tesco" type="double"/>
+    <property name="sainsburys" type="double"/>
+  </entity>
+  <service name="MealplanService1">
+    <annotation name="ActionScriptGeneration">
+      <item name="Source">MealplanService1</item>
+      <item name="ServiceType">RemoteObject</item>
+      <item name="Package">services.mealplanservice1</item>
+      <item name="Endpoint">http://192.168.0.10:80/TabletUIShoppingList/gateway.php</item>
+      <item name="Destination">MealplanService1</item>
+    </annotation>
+    <annotation name="ServiceTypeGroup">
+      <item name="ServiceBackendType">PHP</item>
+    </annotation>
+    <annotation name="ServiceConfig">
+      <item name="PHP_RELATIVE_LOCATION">TabletUIShoppingList/services/MealplanService1.php</item>
+      <item name="PHP_SERVER_ROOT">C:/wamp/www</item>
+      <item name="DEFAULT_ENTITY_PACKAGE">valueObjects</item>
+      <item name="PHP_SERVICES_FOLDER">C:/wamp/www/TabletUIShoppingList/services</item>
+      <item name="PHP_LOCATION">C:/wamp/www/TabletUIShoppingList/services/MealplanService1.php</item>
+      <item name="LINKED_FILE">MealplanService1.php</item>
+      <item name="PHP_SERVER_ROOT_URL">http://192.168.0.10:80/</item>
+      <item name="ABSOLUTE_ENDPOINT">http://192.168.0.10:80/TabletUIShoppingList/gateway.php</item>
+      <item name="PHP_CLASS_NAME">MealplanService1</item>
+    </annotation>
+    <function name="getAllMealplan" return-type="Mealplan[]">
+      <annotation name="analyze group">
+        <item name="analyzed">true</item>
+      </annotation>
+      <annotation name="original signature">
+        <item name="returnType">opaque</item>
+      </annotation>
+    </function>
+    <function name="getMealplanByID" return-type="Mealplan">
+      <annotation name="analyze group">
+        <item name="analyzed">true</item>
+      </annotation>
+      <annotation name="original signature">
+        <item name="inputParams">opaque</item>
+        <item name="returnType">opaque</item>
+      </annotation>
+      <parameter name="itemID" type="integer"/>
+    </function>
+    <function name="createMealplan" return-type="integer">
+      <annotation name="analyze group">
+        <item name="analyzed">true</item>
+      </annotation>
+      <annotation name="original signature">
+        <item name="inputParams">opaque</item>
+        <item name="returnType">opaque</item>
+      </annotation>
+      <parameter name="item" type="Mealplan"/>
+    </function>
+    <function name="updateMealplan" return-type="void">
+      <annotation name="analyze group">
+        <item name="analyzed">true</item>
+      </annotation>
+      <annotation name="original signature">
+        <item name="inputParams">opaque</item>
+        <item name="returnType">opaque</item>
+      </annotation>
+      <parameter name="item" type="Mealplan"/>
+    </function>
+    <function name="deleteMealplan" return-type="void">
+      <annotation name="analyze group">
+        <item name="analyzed">true</item>
+      </annotation>
+      <annotation name="original signature">
+        <item name="inputParams">opaque</item>
+        <item name="returnType">opaque</item>
+      </annotation>
+      <parameter name="itemID" type="integer"/>
+    </function>
+    <function name="count" return-type="integer">
+      <annotation name="analyze group">
+        <item name="analyzed">true</item>
+      </annotation>
+      <annotation name="original signature">
+        <item name="returnType">opaque</item>
+      </annotation>
+    </function>
+    <function name="getMealplan_paged" return-type="Mealplan[]">
+      <annotation name="analyze group">
+        <item name="analyzed">true</item>
+      </annotation>
+      <annotation name="original signature">
+        <item name="inputParams">opaque,opaque</item>
+        <item name="returnType">opaque</item>
+      </annotation>
+      <parameter name="startIndex" type="integer"/>
+      <parameter name="numItems" type="integer"/>
+    </function>
+  </service>
+  <entity name="Mealplan" persistent="true">
+    <annotation name="EntityProperties">
+      <item name="EntityOriginalName">Mealplan</item>
+    </annotation>
+    <annotation name="service Group">
+      <item name="service">MealplanService1</item>
+    </annotation>
+    <annotation name="ServerProperties">
+      <item name="IncludeRemoteClass">nonempty</item>
+    </annotation>
+    <annotation name="DataManagement">
+      <item name="create">createMealplan</item>
+      <item name="update">updateMealplan</item>
+      <item name="get">getMealplanByID</item>
+      <item name="delete">deleteMealplan</item>
+      <item name="fillFunc">getAllMealplan,getMealplan_paged</item>
+      <item name="managingService">MealplanService1</item>
+    </annotation>
+    <annotation name="getMealplanByID">
+      <item name="propertySpecifier">mealID,meal</item>
+    </annotation>
+    <annotation name="getAllMealplan">
+      <item name="propertySpecifier">mealID,meal</item>
+    </annotation>
+    <annotation name="getMealplan_paged">
+      <item name="propertySpecifier">mealID,meal</item>
+      <item name="pagingEnabled">true</item>
+      <item name="positionalPagingParameters">true</item>
+      <item name="countOperation">count</item>
+    </annotation>
+    <annotation name="ActionScriptGeneration">
+      <item name="Package">valueObjects</item>
+    </annotation>
+    <id name="mealID" type="integer"/>
+    <property name="meal" type="string"/>
+  </entity>
+</model>
