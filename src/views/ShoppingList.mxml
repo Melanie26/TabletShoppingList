@@ -1042,7 +1042,7 @@
 	<s:Button x="200" y="63" width="68" height="48" fontFamily="Arial" fontSize="10"
 			  icon="assets/handwrite.png"/>
 	<s:Button x="280" y="63" width="68" height="48" fontFamily="Arial" fontSize="10"
-			  icon="assets/BarcodeIcon.jpg"/>
+			  icon="assets/BarcodeIcon.jpg" click="navigator.pushView(Barcode)"/>
 	
 	<!-- List of products on shopping list -->
 	<s:VGroup x="58" y="240" width="200" height="530">

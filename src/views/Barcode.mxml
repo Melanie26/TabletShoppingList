@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:View xmlns:fx="http://ns.adobe.com/mxml/2009"
+		xmlns:s="library://ns.adobe.com/flex/spark"
+		xmlns:shoppinglistservice="services.shoppinglistservice.*"
+		xmlns:shoppinglistservice1="services.shoppinglistservice1.*"
+		xmlns:valueObjects="valueObjects.*"
+		xmlns:foodnutritionservice="services.foodnutritionservice.*"
+		xmlns:charts="mx.charts.*"
+		xmlns:series="mx.charts.series.*"
+		xmlns:foodcostservice="services.foodcostservice.*"
+		backgroundColor="#E4E7E2" fontSize="24" title="Add Item"
+		viewActivate="view1_viewActivateHandler(event)">
+	<fx:Script>
+		<![CDATA[
+			import mx.events.FlexEvent;
+			import mx.events.IndexChangedEvent;
+			
+			import spark.events.IndexChangeEvent;
+			
+			import flash.filters.ColorMatrixFilter;
+			import spark.events.ViewNavigatorEvent;
+			
+			protected var myCam:CameraUI;
+			
+			protected function view1_viewActivateHandler(event:ViewNavigatorEvent):void
+			{
+				if (CameraUI.isSupported){
+					currentState = "normal";
+					myCam = new CameraUI();
+					myCam.addEventListener(MediaEvent.COMPLETE, onComplete);
+				}
+				else currentState = "unsupported";
+			}
+			
+			protected function btnPic_clickHandler(event:MouseEvent):void
+			{
+				img.filters = [];
+				myCam.launch(MediaType.IMAGE);
+			}
+			
+			protected function onComplete(evt:MediaEvent):void
+			{
+				img.source = evt.data.file.url;
+			}
+			
+			protected function applyFilter():void
+			{
+				if (img.filters.length==0)
+				{
+					var matrixArray:Array = [.33,.33,.33,0,0,
+						.33,.33,.33,0,0,
+						.33,.33,.33,0,0,
+						0,0,0,1,0];
+					var blackWhiteFilter:ColorMatrixFilter = new ColorMatrixFilter(matrixArray);
+					img.filters = [blackWhiteFilter];
+					btnBW.label = "COLOR";
+				}
+				else 
+				{
+					img.filters = [];
+					btnBW.label = "B/W FILTER";
+				}
+			}
+			
+		]]>
+	</fx:Script>
+	<s:states>
+		<s:State name="normal"/>
+		<s:State name="unsupported"/>
+	</s:states>
+	<fx:Declarations>
+		<s:Label x="137" y="68" fontSize="20" text="Select item from list to view nutrition"/>
+	</fx:Declarations>
+	<s:titleContent>
+		<s:VGroup width="289" height="118">
+			<s:HGroup width="200" height="14">
+			</s:HGroup>
+			<s:Label color="#FFFFFF" fontFamily="Arial" fontSize="31" fontStyle="normal"
+					 fontWeight="bold" lineThrough="false" text="Add Item"
+					/>
+			<s:HGroup width="160" height="54" accentColor="#FF0E0E" alignmentBaseline="roman"
+					  breakOpportunity="auto" buttonMode="true" chromeColor="#95E64E"
+					  contentBackgroundColor="#FF00FC" dominantBaseline="auto" downColor="#CF0F0F">
+				<s:Button width="44" height="44" click="navigator.pushView(Cost)" icon="assets/PoundSign.png"/>
+				<s:Button width="44" height="44" label="kcal" click="navigator.pushView(Nutrition)" fontSize="12"/>
+				<s:Button width="44" height="44" click="navigator.pushView(Favourites)"
+						  icon="assets/heart(1).png"/>
+			</s:HGroup>
+		</s:VGroup>
+	</s:titleContent>
+	<s:navigationContent>
+		<s:Image source="assets/SLlogo.png"/>
+	</s:navigationContent>
+	<s:actionContent>
+		<s:Button width="200" height="80" label="Back to Shopping List"
+				  click="navigator.popToFirstView()"/>
+	</s:actionContent>
+	<s:layout>
+		<s:VerticalLayout paddingTop="20" paddingBottom="20" paddingLeft="10" paddingRight="20" gap="40" 
+						  horizontalAlign="center" verticalAlign="middle"/>
+	</s:layout>
+	
+	<s:Label text="This device does not support CameraUI." width="95%" includeIn="unsupported"/>
+	<s:HGroup includeIn="normal">
+		<s:Button id="btnPic" click="btnPic_clickHandler(event)" label="TAKE A PICTURE"/>
+		<s:Button id="btnBW" click="applyFilter()" label="B/W FILTER" />
+	</s:HGroup>
+	
+	<s:Image id="img" height="649" y="124" width="460" x="10" includeIn="normal"/>    
+
+	<s:CalloutButton id="CalloutMenu0" x="27" y="812" label="..."
+					 horizontalPosition="auto" verticalPosition="auto">
+		<s:calloutLayout>
+			<s:HorizontalLayout/>
+		</s:calloutLayout>
+		<s:Button label="Annotate" 
+				  click="navigator.pushView(Annotate);"/>
+		<s:Button label="Meal Plan" 
+				  click="navigator.pushView(MealPlan1);"/>
+		<s:Button label="Settings" 
+				  click="navigator.pushView(Settings);" />
+	</s:CalloutButton>
+</s:View>
